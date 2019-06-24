@@ -1,0 +1,18 @@
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Contexto}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Dominio de aplicaci\363n}{section.1.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Objetivos}{chapter.1}% 4
+\BOOKMARK [2][-]{subsection.1.2.1}{Objetivo General}{section.1.2}% 5
+\BOOKMARK [2][-]{subsection.1.2.2}{Objetivos espec\355ficos}{section.1.2}% 6
+\BOOKMARK [1][-]{section.1.3}{Estructura de la memoria}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Estado del arte}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Algoritmos de reputaci\363n}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{Obtenci\363n de relevancias}{chapter.2}% 10
+\BOOKMARK [0][-]{chapter.3}{Propuesta}{}% 11
+\BOOKMARK [1][-]{section.3.1}{Arquitectura general}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{Recolecci\363n y preparaci\363n de datos}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.2.1}{Descarga y limpieza de datos}{section.3.2}% 14
+\BOOKMARK [0][-]{chapter.4}{Experimentos y resultados}{}% 15
+\BOOKMARK [1][-]{section.4.1}{Planificaci\363n temporal}{chapter.4}% 16
+\BOOKMARK [1][-]{section.4.2}{Experimentos}{chapter.4}% 17
+\BOOKMARK [0][-]{chapter.5}{Conclusiones}{}% 18

@@ -14,7 +14,6 @@
 \contentsline {section}{\numberline {3.2}Creaci\'on del lexic\'on de relevancias}{18}{section.3.2}
 \contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{18}{section.3.3}
 \contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{18}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Procesado de texto}{18}{subsection.3.4.1}
 \contentsline {chapter}{\numberline {4}Experimentos y resultados}{21}{chapter.4}
 \contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{21}{section.4.1}
 \contentsline {section}{\numberline {4.2}Experimentos}{21}{section.4.2}

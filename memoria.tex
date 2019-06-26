@@ -232,23 +232,39 @@ mi familia, pareja, amigos y a todos los que me aguantan, en el buen sentido.}
 \cleardoublepage
 \chapter{Propuesta}
 \label{chap:propuesta}
+En este capítulo, se describe la propuesta del sistema completo, definiendo entradas y salidas explicadas a nivel de diseño. Se empieza con una subsección donde se ve la arquitectura y el propósito general y después se entra en detalle para cada uno de los módulos en las subsiguientes secciones.
 
 \section{Arquitectura general} 
 \label{sec:arquitectura}
+En la Figura \ref{fig:arquitectura}, se pueden observar el módulo principal: \textit{Relevance estimator module}, que es el encargado de estimar las relevancias de los artículos de entrada, y sus correspondientes submódulos: \textit{Text processor, Reputation calculator y Relevance calculator}. Se cuenta además, con dos fuentes de información precalculadas utilizadas por el submódulo \textit{Relevance calculator}, a saber, \textit{Relevance lexicon} que consiste en cuatro lexicones\cite{pustejovsky1991generative} de relevancias de términos médicos y \textit{Neural network}, que consiste en cuatro modelos entrenados de redes neuronales convolucionales (CNN)\cite{poria2015deep} por sus siglas en inglés. Por otra parte, se cuenta con un módulo de visualización(\textit{Visualization}), que se utiliza para ver la salida del sistema y para proporcionar la entrada (\textit{Text}). Por último, se utiliza una fuente de información externa en tiempo real (\textit{Web information resources}).
+
+En primer lugar se entra en detalle en cómo se construye Relevance lexicon, después Neural network y, por último, Relevance estimator module.
 
 \begin{figure}
   \centering
-  \includegraphics[width=12cm, keepaspectratio]{img/arquitectura}
+  \includegraphics[width=16cm, keepaspectratio]{img/architecture}
   \caption{Arquitectura general}
   \label{fig:arquitectura}
 \end{figure}
 
-\section{Recolección y preparación de datos} 
-\label{sec:redatos}
+\section{Creación del lexicón de relevancias} 
+\label{sec:lex}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=16cm, keepaspectratio]{img/train_lexicon}
+  \caption{Arquitectura general}
+  \label{fig:arquitectura}
+\end{figure}
 
-\subsection{Descarga y limpieza de datos}
-\label{sec:dld}
+\section{Creación del la red neuronal} 
+\label{sec:lex}
+
+\section{Estimación de relevancias de artículos} 
+\label{sec:lex}
+\subsection{Procesado de texto}
+\label{sub:procesado}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

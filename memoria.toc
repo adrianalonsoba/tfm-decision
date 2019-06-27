@@ -12,10 +12,13 @@
 \contentsline {chapter}{\numberline {3}Propuesta}{17}{chapter.3}
 \contentsline {section}{\numberline {3.1}Arquitectura general}{17}{section.3.1}
 \contentsline {section}{\numberline {3.2}Creaci\'on del lexic\'on de relevancias}{18}{section.3.2}
-\contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{19}{section.3.3}
-\contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{19}{section.3.4}
-\contentsline {chapter}{\numberline {4}Experimentos y resultados}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{21}{section.4.1}
-\contentsline {section}{\numberline {4.2}Experimentos}{21}{section.4.2}
-\contentsline {chapter}{\numberline {5}Conclusiones}{23}{chapter.5}
-\contentsline {chapter}{Bibliograf\'{\i }a}{25}{chapter*.7}
+\contentsline {subsection}{\numberline {3.2.1}M\'odulo ETL}{18}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}M\'odulo de Gesti\'on del conocimiento}{20}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Text filter}{20}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{20}{section.3.3}
+\contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{20}{section.3.4}
+\contentsline {chapter}{\numberline {4}Experimentos y resultados}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Experimentos}{23}{section.4.2}
+\contentsline {chapter}{\numberline {5}Conclusiones}{25}{chapter.5}
+\contentsline {chapter}{Bibliograf\'{\i }a}{27}{chapter*.7}

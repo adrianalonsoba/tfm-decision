@@ -258,17 +258,37 @@ El lexicón de relevancias tiene un papel fundamental a la hora de estimar la rel
   \label{fig:arquitectura}
 \end{figure}
 
+\subsection{Módulo ETL} 
+\label{sec:etl}
+
 El módulo ETL se encarga de la obtención y el preprocesado del corpus de artículos médicos. Se divide a su vez en dos submódulos: Corpus processor y Reputation calculator.
 Corpus processor obtiene artículos de Pubmed Central\footnote{\url{https://www.ncbi.nlm.nih.gov/pmc/}} utilizando técnicas de web scrapping \cite{mitchell2018web}. Estos artículos en formato XML \cite{bray2000extensible}, son parseados y almacenados en formato JSON \cite{crockford2006application} en Document knowledge consolidation con una estructura de párrafos y frases, eliminando tablas, gráficas u otros artefactos no aprovechables por el sistema.
 Una vez un documento se almacena en la base de datos, se procede a calcular su resumen automático aplicando el clásico algoritmo Text Rank \cite{mihalcea2004textrank} utilizando una popular implementación en Python \cite{DBLP:journals/corr/BarriosLAW16}. Este tipo de resúmenes ofrecen una ordenación de las frases de un documento por relevancia, sirviendo como factor de filtrado de información poco relevante o redundante y a la vez como factor de compresión, haciendo la información más manejable en memoria. Se obtiene un 20 porciento del tamaño original de los artículos y se almacena como un nuevo artibuto del documento en la base de datos.
 
-Una vez preprocesados y almacenados los artículos, Reputation calculator calcula la reputación de los mismos para que esta sea añadida como nuevo atibuto y ser utilizada posteriormente por el módulo Knowledge managment.
-El algoritmo de reputación empleado es una adaptación del empleado en el artículo \cite{fernandez2018unified}. La reputación a priori de un artículo viene dada por:
+Una vez preprocesados y almacenados los artículos, Reputation calculator calcula la reputación de los mismos para que esta sea añadida como nuevo atributo y ser utilizada posteriormente por el módulo Knowledge managment.
+El algoritmo de reputación empleado es una adaptación del introducido en el artículo \cite{fernandez2018unified}. La reputación a priori de un artículo viene dada por:
 \begin{equation}
 \label{eq:1}
 	rep_{p} = \alpha \cdot rep\_authors_{p} + (1 - \alpha) \cdot citations_{p} \,,
 \end{equation}
 
+donde  $rep\_authors_{p}$ es la reputación media del los autores del artículo y $citations_{p}$ su número de citas total en el momento de la consulta. El parámetro $\alpha \in (0,1)$ actúa como modulador de importancia relativa entre las citas y los autores. La reputación de cada autor viene dada por:
+\begin{equation}
+\label{eq:3}
+	rep_{i} = \omega_1 \cdot inf\_citation\_count + \omega_2 \cdot citation\_velocity + \omega_3 \cdot seniority + \omega_4 \cdot papers \,,
+\end{equation}
+
+donde $\sum_{i=1}^4\omega_i=1$. El parámetro $inf\_citation\_count$ representa el número de citas altamente influyentes del autor. \cite{valenzuela2015identifying}. $citation\_velocity$ indica lo popular que es el autor durante los últimos 3 años. $seniority$ es la cantidad de años transcurridos entre la primera y última publicación del autor. Por último, $papers$ es el número total de artículos publicados por el autor. 
+Estos parámetros son extraídos de  la API REST de Semantic Scholar\cite{semanticscholar2018sc}. Una vez que el módulo Reputation Calculator ha calculado la reputación del artículo, esta se añade a \emph{Document knowledge consolidation}, como un atributo nuevo.
+
+\subsection{Módulo de Gestión del conocimiento} 
+\label{sec:know}
+Este módulo consulta \emph{Document knowledge consolidation} y sirviéndose de 3 submódulos, construye finalmente el lexicón. Estos 3 submódulos son Text filter, Text normalizer y Lexicon builder.
+
+\subsection{Text filter} 
+\label{sec:filter}
+
+Este módulo analiza los resúmenes extraidos por el módulo ETL por cada documento, aplicando técnicas de procesamiento de lenguaje natural (NLP) \cite{jurafsky2014speech} extrayendo los sustantivos y eliminando palabras vacías \cite{chandramouli2018domain}, tanto genéricas como de dominio médico\cite{gupta2015distantly} y
 
 
 

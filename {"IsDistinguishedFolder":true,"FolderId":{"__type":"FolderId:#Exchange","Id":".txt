@@ -1,0 +1,1 @@
+{"IsDistinguishedFolder":true,"FolderId":{"__type":"FolderId:#Exchange","Id":"AQMkAGI5MjY2ADVkYy05MDgzLTRhN2EtYTgyYi1kNmU1MDQ1OTNjOTgALgAAAwXpLvA31S1Kq4bMiQP+hv8BAFC1ph2BkwRFlSRUngzGe6MAAAIBDwAAAA==","ChangeKey":"AQAAABYAAABQtaYdgZMERZUkVJ4MxnujAAAAAbu9"},"DragItemType":4}

@@ -238,7 +238,7 @@ En este capítulo, se describe la propuesta del sistema completo, definiendo entr
 \label{sec:arquitectura}
 En la Figura \ref{fig:arquitectura}, se pueden observar el módulo principal: \textit{Relevance estimator module}, que es el encargado de estimar las relevancias de los artículos de entrada, y sus correspondientes submódulos: \textit{Text processor, Reputation calculator y Relevance calculator}. Se cuenta además, con dos fuentes de información precalculadas utilizadas por el submódulo \textit{Relevance calculator}, a saber, \textit{Relevance lexicon} que consiste en cuatro lexicones\cite{pustejovsky1991generative} de relevancias de términos médicos y \textit{Neural network}, que consiste en cuatro modelos entrenados de redes neuronales convolucionales (CNN)\cite{poria2015deep} por sus siglas en inglés. Por otra parte, se cuenta con un módulo de visualización(\textit{Visualization}), que se utiliza para ver la salida del sistema y para proporcionar la entrada (\textit{Text}). Por último, se utiliza una fuente de información externa en tiempo real (\textit{Web information resources}).
 
-En primer lugar se entra en detalle en cómo se construye Relevance lexicon, después Neural network y, por último, Relevance estimator module.
+En primer lugar se entra en detalle en cómo se construye Relevance lexicon, después Neural network y, por último, Relevance estimator module, el cuál emplea todo lo anterior para calcular las relevancias de nuevos documentos.
 
 \begin{figure}
   \centering
@@ -249,6 +249,7 @@ En primer lugar se entra en detalle en cómo se construye Relevance lexicon, desp
 
 \section{Creación del lexicón de relevancias} 
 \label{sec:lex}
+El lexicón de relevancias tiene un papel fundamental a la hora de estimar la relevancia de los artículos, en concreto, contiene la relevancia de las palabras de el dominio de aplicación utilizado para crear el mismo. Para la creación del lexicón se ha diseñado un marco de trabajo completo, cuya arquitectura puede verse en la Figura \ref{fig:train_lexicon}. Esta cuenta con un módulo de extracción, transformación y carga (ETL por sus siglas en inglés)\cite{vassiliadis2009survey}, un módulo de gestión de conomicimiento (Knowledge managment) y uno de visualización. Se cuenta, además, con dos bases de datos, una orientada a documentos\cite{han2011survey}(Document knowledge consolidation) y una ElasticSearch\cite{gormley2015elasticsearch} para visualización con Kibana \cite{gupta2015kibana}.
 
 \begin{figure}
   \centering
@@ -256,6 +257,22 @@ En primer lugar se entra en detalle en cómo se construye Relevance lexicon, desp
   \caption{Arquitectura de generación de lexicones}
   \label{fig:arquitectura}
 \end{figure}
+
+El módulo ETL se encarga de la obtención y el preprocesado del corpus de artículos médicos. Se divide a su vez en dos submódulos: Corpus processor y Reputation calculator.
+Corpus processor obtiene artículos de Pubmed Central\footnote{\url{https://www.ncbi.nlm.nih.gov/pmc/}} utilizando técnicas de web scrapping \cite{mitchell2018web}. Estos artículos en formato XML \cite{bray2000extensible}, son parseados y almacenados en formato JSON \cite{crockford2006application} en Document knowledge consolidation con una estructura de párrafos y frases, eliminando tablas, gráficas u otros artefactos no aprovechables por el sistema.
+Una vez un documento se almacena en la base de datos, se procede a calcular su resumen automático aplicando el clásico algoritmo Text Rank \cite{mihalcea2004textrank} utilizando una popular implementación en Python \cite{DBLP:journals/corr/BarriosLAW16}. Este tipo de resúmenes ofrecen una ordenación de las frases de un documento por relevancia, sirviendo como factor de filtrado de información poco relevante o redundante y a la vez como factor de compresión, haciendo la información más manejable en memoria. Se obtiene un 20 porciento del tamaño original de los artículos y se almacena como un nuevo artibuto del documento en la base de datos.
+
+Una vez preprocesados y almacenados los artículos, Reputation calculator calcula la reputación de los mismos para que esta sea añadida como nuevo atibuto y ser utilizada posteriormente por el módulo Knowledge managment.
+El algoritmo de reputación empleado es una adaptación del empleado en el artículo \cite{fernandez2018unified}. La reputación a priori de un artículo viene dada por:
+\begin{equation}
+\label{eq:1}
+	rep_{p} = \alpha \cdot rep\_authors_{p} + (1 - \alpha) \cdot citations_{p} \,,
+\end{equation}
+
+
+
+
+
 
 \section{Creación del la red neuronal} 
 \label{sec:lex}

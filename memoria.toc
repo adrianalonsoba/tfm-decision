@@ -15,8 +15,10 @@
 \contentsline {subsection}{\numberline {3.2.1}M\'odulo ETL}{18}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}M\'odulo de Gesti\'on del conocimiento}{20}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Text filter}{20}{subsection.3.2.3}
-\contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{20}{section.3.3}
-\contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{20}{section.3.4}
+\contentsline {subsection}{\numberline {3.2.4}Text normalizer}{20}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Lexicon builder}{21}{subsection.3.2.5}
+\contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{21}{section.3.3}
+\contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{22}{section.3.4}
 \contentsline {chapter}{\numberline {4}Experimentos y resultados}{23}{chapter.4}
 \contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{23}{section.4.1}
 \contentsline {section}{\numberline {4.2}Experimentos}{23}{section.4.2}

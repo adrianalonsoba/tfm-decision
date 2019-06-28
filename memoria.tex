@@ -290,15 +290,62 @@ Este módulo consulta \emph{Document knowledge consolidation} y sirviéndose de 3 
 
 Este módulo analiza los resúmenes extraidos por el módulo ETL por cada documento, aplicando técnicas de procesamiento de lenguaje natural (NLP) \cite{jurafsky2014speech} extrayendo los sustantivos y eliminando palabras vacías \cite{chandramouli2018domain}, tanto genéricas como de dominio médico\cite{gupta2015distantly} y académico\cite{seinecleStopwords2016}. Finalmente, se obtienen los lemas de los sustantivos, lo que permite cierta desambiguación, ya que el lema de una palabra depende de la función sintáctica de la misma. Además, se resuelven posibles conflictos entre mayúsculas, minúsculas, singulares y plurales.
 
+\subsection{Text normalizer} 
+\label{sec:filter}
+Este submódulo construye una matriz de términos por documentos \cite{anandarajan2019term} a partir de la cuál construye la matriz TF-IDF \cite{ramos2003using}. Los pesos resultantes se combinan con las reputaciones de los artículos dando la medida de relevancia de cada término $rel\_lex_{t}$. La relevancia de cada término $t$ en los  $N$ artículos pertenecientes al corpus $C$ viene dada por:
+
+\begin{equation}
+	rel\_lex_{t} =\log\left(\frac{1}{N} \cdot \sum \limits_{p=1}^N \beta  \cdot tfidf(t)_p + (1-\beta) \cdot rep_p\right), \forall p \in C \,,
+\end{equation}
+
+donde $rep_p$ es la reputación del artículo $p$, $tfidf(t)_p$ es el valor TF-IDF del término $t$ en el artículo $p$ y $\beta \in (0,1)$ es otro parámetro que modula la importancia relativa del valor TF-IDF sobre la reputación. Cabe destacar que $tfidf(t)_p \in (0,1)$ ya que han sido normalizados por simplicidad y se aplica el logaritmo para normalizar la distribución.
+
+\subsection{Lexicon builder} 
+\label{sec:filter}
+Este componente construye y organiza el lexicón a partir del texto normalizado. Contempla además la posibilidad de ponderar aún más el peso de aquellos términos de dominio específico proporcionados por un diccionario, médico en este caso \cite{webster2017merriam}. 
+
+Se organizan y construyen lexicones por cada conjunto de artículos correspondientes a cada año disponible, teniendo en cuenta la evolución de la relevancia de cada término a lo largo de los años. De esta manera se puede modular la curva de olvido \cite{averell2011form} y tener en consideración las tendencias del dominio de aplicación.
 
 
+Se construyen diferentes valores de relevancia para cada término específico $rel\_lex_{t}(y)$ de acuerdo a un año específico $y$, manteniendo las palabras del año anterior en el nuevo de la forma:
 
+\begin{equation}
+	rel\_lex_{t}(y) = \rho \cdot rel\_lex_{t} + (1-\rho)\cdot rel\_lex_{t}(y-1) \,,
+\end{equation}
+
+donde $rel\_lex_{t}$ es la relevancia proporcionada por el marco de trabajo para el término $t$ y $rel\_lex_{t}(y-1)$ es la correspondiente al año anteruir $y-1$. El parámetro $\rho$ controla el peso del año anterior.
 
 \section{Creación del la red neuronal} 
 \label{sec:lex}
 
+Por muy grande que sea el corpus que se utilice para la creación de los lexicones, es virtualmente imposible contar con la relevancia de todos los términos existentes. Por tanto, se ha desarrollado una Red Neuronal Convolucional (CNN, por sus siglas en inglés)\cite{poria2015deep} para servir de apoyo al sistema. El propósito de la red es predecir la relevancia de aquellas frases que no contengan ninguna palabra presente en el lexicón. En la Tabla \ref{tab:cnn} se puede ver la configuración de la misma, la cuál es una versión optimizada de la aproximación introducida en \cite{bhavsar2017natural}. Cabe destacar que la capa de \textit{embedding} utiliza un modelo pre-entrenado de Glove \cite{pennington2014glove} con un vocabulario de  $400,000$ palabras de  Wikipedia \cite{o2016wikipedia}. La capa de salida cuenta con activación \textit{softmax}, la cuál proporciona valores entre $0$ y $1$. En las capas ocultas se cuenta con convoluciones, funciones de activación  \textit{relu} y funciones de \texit{dropout}.
+
+Para construir la red, se propone la siguiente metodología: En primer lugar, el usuario selecciona un conjunto de artículos del corpus que no hayan sido utilizados para construir el lexicón. Después, se  procesa el texto separando por frases y términos, eliminando palabras vacías y lematizando de manera análoga a como se procede en el módulo de ETL, de esta manera se aumenta el número potencial de coincidencias entre el texto utilizado para la creación de la red y las palabras del lexicón. Se etiquetarán como relevantes ($1$) aquellas frases con mayor relevancia de acuerdo al lexicón y como no relevantes ($0$) las menor relevancia o aquellas que no contengan palabras del lexicón. Se define, por tanto, 
+un umbral de relevancia $\epsilon$ para elegir el mínimo necesario de acuerdo a lo estricta que se quiere que sea la red neuronal. Finalmente se debe elegir el número de frases etiquetadas para conformar el conjunto de entrenamiento y test. La red neuronal resultante debería ser capaz de prececir la relevancias de las frases sin palabras del lexicón.
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{c}
+			\hline
+			\textbf{Layers} \\
+            \hline
+			\multicolumn{1}{l}{1. Embedding input\_dim 400000 output\_dim 50} \\
+			\multicolumn{1}{l}{2. Dropout rate 0.4} \\
+			\multicolumn{1}{l}{3. Conv1D 250 filters of 3 with stride 1} \\
+            \multicolumn{1}{l}{4. Pool1D (max) with stride 1} \\
+            \multicolumn{1}{l}{5. Dense units 250} \\
+            \multicolumn{1}{l}{6. Dropout rate 0.4} \\
+            \multicolumn{1}{l}{7. Relu} \\
+            \multicolumn{1}{l}{8. Dense units 1} \\
+            \multicolumn{1}{l}{9. Softmax} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Layers of the Convolutional Neural Network.}
+	\label{tab:cnn}
+\end{table}
+
 \section{Estimación de relevancias de artículos} 
-\label{sec:lex}
+\label{sec:full_process}
 \begin{figure}
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/pipeline_2}

@@ -14,10 +14,12 @@
 \BOOKMARK [2][-]{subsection.3.2.1}{M\363dulo ETL}{section.3.2}% 14
 \BOOKMARK [2][-]{subsection.3.2.2}{M\363dulo de Gesti\363n del conocimiento}{section.3.2}% 15
 \BOOKMARK [2][-]{subsection.3.2.3}{Text filter}{section.3.2}% 16
-\BOOKMARK [1][-]{section.3.3}{Creaci\363n del la red neuronal}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.4}{Estimaci\363n de relevancias de art\355culos}{chapter.3}% 18
-\BOOKMARK [0][-]{chapter.4}{Experimentos y resultados}{}% 19
-\BOOKMARK [1][-]{section.4.1}{Planificaci\363n temporal}{chapter.4}% 20
-\BOOKMARK [1][-]{section.4.2}{Experimentos}{chapter.4}% 21
-\BOOKMARK [0][-]{chapter.5}{Conclusiones}{}% 22
-\BOOKMARK [0][-]{chapter*.7}{Bibliograf\355a}{}% 23
+\BOOKMARK [2][-]{subsection.3.2.4}{Text normalizer}{section.3.2}% 17
+\BOOKMARK [2][-]{subsection.3.2.5}{Lexicon builder}{section.3.2}% 18
+\BOOKMARK [1][-]{section.3.3}{Creaci\363n del la red neuronal}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.4}{Estimaci\363n de relevancias de art\355culos}{chapter.3}% 20
+\BOOKMARK [0][-]{chapter.4}{Experimentos y resultados}{}% 21
+\BOOKMARK [1][-]{section.4.1}{Planificaci\363n temporal}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.2}{Experimentos}{chapter.4}% 23
+\BOOKMARK [0][-]{chapter.5}{Conclusiones}{}% 24
+\BOOKMARK [0][-]{chapter*.7}{Bibliograf\355a}{}% 25

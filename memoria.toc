@@ -19,8 +19,8 @@
 \contentsline {subsection}{\numberline {3.2.5}Lexicon builder}{21}{subsection.3.2.5}
 \contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{21}{section.3.3}
 \contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{22}{section.3.4}
-\contentsline {chapter}{\numberline {4}Experimentos y resultados}{23}{chapter.4}
-\contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{23}{section.4.1}
-\contentsline {section}{\numberline {4.2}Experimentos}{23}{section.4.2}
-\contentsline {chapter}{\numberline {5}Conclusiones}{25}{chapter.5}
-\contentsline {chapter}{Bibliograf\'{\i }a}{27}{chapter*.7}
+\contentsline {chapter}{\numberline {4}Experimentos y resultados}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}Experimentos}{25}{section.4.2}
+\contentsline {chapter}{\numberline {5}Conclusiones}{27}{chapter.5}
+\contentsline {chapter}{Bibliograf\'{\i }a}{29}{chapter*.7}

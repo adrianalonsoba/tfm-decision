@@ -318,7 +318,7 @@ donde $rel\_lex_{t}$ es la relevancia proporcionada por el marco de trabajo para
 \section{Creación del la red neuronal} 
 \label{sec:lex}
 
-Por muy grande que sea el corpus que se utilice para la creación de los lexicones, es virtualmente imposible contar con la relevancia de todos los términos existentes. Por tanto, se ha desarrollado una Red Neuronal Convolucional (CNN, por sus siglas en inglés)\cite{poria2015deep} para servir de apoyo al sistema. El propósito de la red es predecir la relevancia de aquellas frases que no contengan ninguna palabra presente en el lexicón. En la Tabla \ref{tab:cnn} se puede ver la configuración de la misma, la cuál es una versión optimizada de la aproximación introducida en \cite{bhavsar2017natural}. Cabe destacar que la capa de \textit{embedding} utiliza un modelo pre-entrenado de Glove \cite{pennington2014glove} con un vocabulario de  $400,000$ palabras de  Wikipedia \cite{o2016wikipedia}. La capa de salida cuenta con activación \textit{softmax}, la cuál proporciona valores entre $0$ y $1$. En las capas ocultas se cuenta con convoluciones, funciones de activación  \textit{relu} y funciones de \texit{dropout}.
+Por muy grande que sea el corpus que se utilice para la creación de los lexicones, es virtualmente imposible contar con la relevancia de todos los términos existentes. Por tanto, se ha desarrollado una Red Neuronal Convolucional (CNN, por sus siglas en inglés)\cite{poria2015deep} para servir de apoyo al sistema. El propósito de la red es predecir la relevancia de aquellas frases que no contengan ninguna palabra presente en el lexicón. En la Tabla \ref{tab:cnn} se puede ver la configuración de la misma, la cuál es una versión optimizada de la aproximación introducida en \cite{bhavsar2017natural}. Cabe destacar que la capa de \textit{embedding} utiliza un modelo pre-entrenado de Glove \cite{pennington2014glove} con un vocabulario de  $400,000$ palabras de  Wikipedia \cite{o2016wikipedia}. La capa de salida cuenta con activación \textit{softmax}, la cuál proporciona valores entre $0$ y $1$. En las capas ocultas se cuenta con convoluciones, funciones de activación  \textit{relu} y funciones de \textit{dropout}.
 
 Para construir la red, se propone la siguiente metodología: En primer lugar, el usuario selecciona un conjunto de artículos del corpus que no hayan sido utilizados para construir el lexicón. Después, se  procesa el texto separando por frases y términos, eliminando palabras vacías y lematizando de manera análoga a como se procede en el módulo de ETL, de esta manera se aumenta el número potencial de coincidencias entre el texto utilizado para la creación de la red y las palabras del lexicón. Se etiquetarán como relevantes ($1$) aquellas frases con mayor relevancia de acuerdo al lexicón y como no relevantes ($0$) las menor relevancia o aquellas que no contengan palabras del lexicón. Se define, por tanto, 
 un umbral de relevancia $\epsilon$ para elegir el mínimo necesario de acuerdo a lo estricta que se quiere que sea la red neuronal. Finalmente se debe elegir el número de frases etiquetadas para conformar el conjunto de entrenamiento y test. La red neuronal resultante debería ser capaz de prececir la relevancias de las frases sin palabras del lexicón.
@@ -345,11 +345,14 @@ un umbral de relevancia $\epsilon$ para elegir el mínimo necesario de acuerdo a 
 \end{table}
 
 \section{Estimación de relevancias de artículos} 
+
+Se ha diseñao un flujo de trabajo para ilustrar como funciona todo el proceso del marco de trabajo. Se comienza eligiendo un texto para evaluar y se concluye devolviendo su relevancia normalizada entre $0$ y $1$ (ver Figura. \ref{fig:pipeline}).
+
 \label{sec:full_process}
 \begin{figure}
   \centering
   \includegraphics[width=8cm, keepaspectratio]{img/pipeline_2}
-  \caption{Flujo de trabajo}
+  \caption{Flujo de trabajo de cálculo de relevancia de un artículo}
   \label{fig:arquitectura}
 \end{figure}
 

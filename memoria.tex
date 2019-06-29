@@ -127,8 +127,6 @@ mi familia, pareja, amigos y a todos los que me aguantan, en el buen sentido.}
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 La comunidad investigadora se enfrenta cada vez a un mayor número de publicaciones y tendenencias que deben atender a la hora hacer sus propias publicaciones. Estos tópicos y tendencias  son estado del arte en el momento de su publicacón o presentación en conferencias, no obsante, pueden perder relevancia con el paso del tiempo. Esta medida de relevancia de publicaciones representa un desafío para la comunidad investigadora, la cuál invierte mucho tiempo leyendo literatura a menudo desafasada o poco relevante. Para abordar este problema, se introduce un marco de trabajo para evaluar la relevancia de artículos científicos a través de, principipalmente, un lexicón y una red neuronal. Se han llevado a cabo diversos expermientos aplicados al dominio de la medicina que demuestran el buen funcionamiento del marco de trabajo.
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen en inglés
 
@@ -166,45 +164,49 @@ La comunidad investigadora se enfrenta cada vez a un mayor número de publicacion
 \cleardoublepage
 \chapter{Introducción}
 \label{sec:intro} % etiqueta para poder referenciar luego en el texto con ~
-
+En este capítulo introductorio se presenta, en primer lugar, el contexto científico sobre el que se enmarca el presente proyecto. Después, se introduce el objetivo principal y finalmente los objetivos específicos.
 
 \section{Contexto}
 \label{sec:contexto}
 
+La comunidad investigadora invierte la mayor parte de su tiempo  documentándose, investigando literatura previa y el estado del arte. A menudo, la relevancia de los diferentes tópicos sobre los que se investiga fluctúa en gran medida con el tiempo, lo que provoca que a menudo los investigadores pierdan mucho tiempo con literatura desfasada o poco relevante. Por tanto, este trabajo introduce un marco de trabajo completo que tiene como finalidad organizar y medir la relevancia de artículos de investigación.
 
+Dado que se trabaja con información textual, se utilizan técnicas de Procesamiento de Lenguaje Natural (NLP, por sus siglas en inglés) \cite{jurafsky2014speech} que sirven para poder tratar con este tipo de información desde un punto de vista computacional. A través de estas técnicas, las cuáles se combinan con métricas de reputación \cite{josang2007survey}, se construye un lexicón de relevancias para evaluar la relevancia de los documentos de un modo similar a un análisis de sentimientos \cite{de2018visual}. Para complementar este lexicón, se emplean técnicas de Deep Learning \cite{lecun2015deep} para evaluar la relevancia de los términos cuya relevancia sea desconocida por el lexicón.
 
 \subsection{Dominio de aplicación}
 \label{sec:dominio}
 
+Aunque este marco de trabajo puede ser entrenado para cualquier dominio de investigación científica, los experimentos se han llevado a cabo en el dominio médico. Se han descargado y parseado mas de dos millones de artículos de investigación médica provenienyes de Pubmed Central . Cabe destacar que, aunque los artículos de investigacion podrían ser considerados un dominio de aplicación por si mismo, la ciencia abarca demasiados temas para que el sistema funciona de forma deseable, por tanto, el sistema sólo debe ser utilizado apra evaluar los documentos del mismo dominio de aplicación concreto con el que haya sido entrenado.
 
 
 
 \section{Objetivos}
 \label{sec:objetivos}
 
-
-
-\subsection{Objetivo General}
-\label{sec:obgeneral}
-
-
+El principal objetivo del presente trabajo es la creación del sistema completo de evaluación de relevancias, lo que comprende un marco de trabajo que incluye la interfaz para la introducción de documentos y a la salida devuelva la relevancia de los mismos.
 
 \subsection{Objetivos específicos}
 \label{sec:obepescificos}
 
 \begin{itemize}
-\item 
-\item 
+\item Obtención del corpus de documentos científicos: Se necesita un gran volumen de documentos para la creación del lexicón, el entrenamiento de la red neuronal y para la validación del sistema. 
+\item Limpieza y almacenaje de los documentos: Una vez descargados, deben ser limpiados y debidamente almacenados en base de datos. Se almacenan con los metadatos necesarios para la creación del lexicón y la red neuronal, como la fecha, el DOI, el resumen y la reputación de cada artículo.
+\item Construcción del lexicón de relevancias: Se aplican diversas métricas para la creación del lexicón. A mayor volumen de documentos utilizado, mayor riqueza y precisión del lexicón, lo que implica una menor dependencia de la red neuronal.
+\item Construcción de la red neuronal: Debido a las limitaciones del lexicón, ya sea por limitaciones computacionales o de volumen de corpus considerado, se crea una red neuronal de apoyo para predecir las relevancias fuera del lexicón.
+\item Creación del flujo de evaluación de relevancia: Se analizan documentos o textos nuevos combinando las métricas de relevancia proporcionadas por el lexicón, la red neuronal y la reputación para estimar la relevancia de los mismos.
 \end{itemize}
 
 \section{Estructura de la memoria}
 \label{sec:estructura}
 
+La memoria tiene los siguientes capítulos fundamentales:
+
 \begin{enumerate}
-\item Estado del arte: 
-\item Propuesta: 
-\item Experimentos y resultados: 
-\item Conclusiones: 
+\item Introducción.
+\item Estado del arte: En este capítulo se revisa la literatura en la que se apoya el siguiente trabajo, explicando ideas utilizadas y otras descartadas
+\item Propuesta: Se trata del capítulo central y más importante, en el cuál se describe la propuesta del marco de trabajo completo.
+\item Experimentos y resultados: Se describe el caso uso del marco de trabajo, presentando los diferentes experimentos realizados.
+\item Conclusiones: En este capítulo final se evalúan los resultados obtenidos y objetivos completados. También se revisan posibles líneas futuras de investigación y mejora.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{pustejovsky1991generative}
 James Pustejovsky.
@@ -11,6 +11,112 @@ Soujanya Poria, Erik Cambria, and Alexander Gelbukh.
   kernel learning for utterance-level multimodal sentiment analysis}.
 \newblock In {\em Proceedings of the 2015 conference on empirical methods in
   natural language processing}, pages 2539--2544, 2015.
+
+\bibitem{vassiliadis2009survey}
+Panos Vassiliadis.
+\newblock A survey of extract--transform--load technology.
+\newblock {\em International Journal of Data Warehousing and Mining (IJDWM)},
+  5(3):1--27, 2009.
+
+\bibitem{mitchell2018web}
+Ryan Mitchell.
+\newblock {\em Web Scraping with Python: Collecting More Data from the Modern
+  Web}.
+\newblock " O'Reilly Media, Inc.", 2018.
+
+\bibitem{bray2000extensible}
+Tim Bray, Jean Paoli, C~Michael Sperberg-McQueen, Eve Maler, and Franois
+  Yergeau.
+\newblock Extensible markup language (xml) 1.0, 2000.
+
+\bibitem{crockford2006application}
+Douglas Crockford.
+\newblock The application/json media type for javascript object notation
+  (json).
+\newblock Technical report, 2006.
+
+\bibitem{mihalcea2004textrank}
+Rada Mihalcea and Paul Tarau.
+\newblock Textrank: Bringing order into text.
+\newblock In {\em Proceedings of the 2004 conference on empirical methods in
+  natural language processing}, 2004.
+
+\bibitem{DBLP:journals/corr/BarriosLAW16}
+Federico Barrios, Federico L{\'{o}}pez, Luis Argerich, and Rosa Wachenchauzer.
+\newblock Variations of the similarity function of textrank for automated
+  summarization.
+\newblock {\em CoRR}, abs/1602.03606, 2016.
+
+\bibitem{fernandez2018unified}
+Alberto Fern{\'a}ndez-Isabel, Juan~Carlos Prieto, Felipe Ortega,
+  Isaac~Mart{\'\i}n de~Diego, Javier~M Moguerza, Jos{\'e} Mena, Sara Galindo,
+  and Liana Napalkova.
+\newblock A unified knowledge compiler to provide support the scientific
+  community.
+\newblock {\em Knowledge-Based Systems}, 161:157--171, 2018.
+
+\bibitem{semanticscholar2018sc}
+{Allen Institute for Artificial Intelligence and Semantic Scholar}.
+\newblock {Semantic Scholar API}.
+\newblock \url{https://api.semanticscholar.org/}, 2018.
+\newblock [Online: accedido 20-Dic-2018].
+
+\bibitem{jurafsky2014speech}
+Dan Jurafsky and James~H Martin.
+\newblock {\em Speech and language processing}, volume~3.
+\newblock Pearson London, 2014.
+
+\bibitem{chandramouli2018domain}
+Aravind Chandramouli.
+\newblock Domain-specific stopword removal from unstructured computer text
+  using a neural network, August~9 2018.
+\newblock US Patent App. 15/426,958.
+
+\bibitem{gupta2015distantly}
+Sonal Gupta.
+\newblock {\em Distantly Supervised Information Extraction Using Bootstrapped
+  Patterns}.
+\newblock PhD thesis, Stanford University, 2015.
+
+\bibitem{anandarajan2019term}
+Murugan Anandarajan, Chelsey Hill, and Thomas Nolan.
+\newblock Term-document representation.
+\newblock In {\em Practical Text Analytics}, pages 61--73. Springer, 2019.
+
+\bibitem{ramos2003using}
+Juan Ramos et~al.
+\newblock Using tf-idf to determine word relevance in document queries.
+\newblock In {\em Proceedings of the first instructional conference on machine
+  learning}, volume 242, pages 133--142, 2003.
+
+\bibitem{webster2017merriam}
+Merriam Webster.
+\newblock Merriam-webster medical dictionary.
+\newblock {\em Available from: Merriam-Webster and https://en. wikipedia.
+  org/wiki/Iatrogenesis}, 2017.
+
+\bibitem{averell2011form}
+Lee Averell and Andrew Heathcote.
+\newblock The form of the forgetting curve and the fate of memories.
+\newblock {\em Journal of Mathematical Psychology}, 55(1):25--35, 2011.
+
+\bibitem{bhavsar2017natural}
+Krishna Bhavsar, Naresh Kumar, and Pratap Dangeti.
+\newblock {\em Natural Language Processing with Python Cookbook: Over 60
+  recipes to implement text analytics solutions using deep learning
+  principles}.
+\newblock Packt Publishing Ltd, 2017.
+
+\bibitem{pennington2014glove}
+Jeffrey Pennington, Richard Socher, and Christopher Manning.
+\newblock Glove: Global vectors for word representation.
+\newblock In {\em Proceedings of the 2014 conference on empirical methods in
+  natural language processing (EMNLP)}, pages 1532--1543, 2014.
+
+\bibitem{o2016wikipedia}
+Dan O'Sullivan.
+\newblock {\em Wikipedia: a new community of practice?}
+\newblock Routledge, 2016.
 
 \bibitem{wilson2003gantt}
 James~M Wilson.

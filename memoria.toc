@@ -18,7 +18,7 @@
 \contentsline {subsection}{\numberline {3.2.4}Text normalizer}{20}{subsection.3.2.4}
 \contentsline {subsection}{\numberline {3.2.5}Lexicon builder}{21}{subsection.3.2.5}
 \contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{21}{section.3.3}
-\contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{22}{section.3.4}
+\contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{23}{section.3.4}
 \contentsline {chapter}{\numberline {4}Experimentos y resultados}{25}{chapter.4}
 \contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{25}{section.4.1}
 \contentsline {section}{\numberline {4.2}Experimentos}{25}{section.4.2}

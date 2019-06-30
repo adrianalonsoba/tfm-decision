@@ -453,10 +453,10 @@ Por otra parte, se ha tenido en consideración el uso de un diccionario médico ab
 
 \begin{figure}[htbp]
 \centering
-\subfigure[2015]{\includegraphics[width=70mm]{img/2015_hist.png}}
-\subfigure[2016]{\includegraphics[width=70mm]{img/2016_hist.png}}
-\subfigure[2017]{\includegraphics[width=70mm]{img/2017_hist.png}}
-\subfigure[2018]{\includegraphics[width=70mm]{img/2018_hist.png}}
+\subfigure[2015]{\includegraphics[width=65mm]{img/2015_hist.png}}
+\subfigure[2016]{\includegraphics[width=65mm]{img/2016_hist.png}}
+\subfigure[2017]{\includegraphics[width=65mm]{img/2017_hist.png}}
+\subfigure[2018]{\includegraphics[width=65mm]{img/2018_hist.png}}
 \caption{Histograma de relevancias para cada lexicón.} \label{fig:hists}
 \end{figure}
 
@@ -464,6 +464,10 @@ Por otra parte, se ha tenido en consideración el uso de un diccionario médico ab
 \section{Creación de las redes neuronales por año.}
 \label{sec:lexis}
 
+Para crear el conjunto de entrenamiento, se cuenta con mas de $100000$ artículos de cada año no utilizados para la creación de los lexicones. Siguiendo el procedimiento descrito en la Sección \ref{sec:red}, se crea un conjunto con $320000$ frases etiquetadas para entrenamiento y $80000$ para test para los 4 lexicones. Se etiquetan como relevantes aquellas frases que contienen 4 o más sustantivos que tengan relevancia $0.7$ o mayor. Se utiliza este valor de corte porque es a partir del cuál se encuentra la mayoría de los términos mas relevantes de la población perteneciente al diccionario médico. Siguiendo este criterio, se realiza un análisis exploratorio con $1000$ del año 2015 no utilizados para la creación del lexicón del que se obtienen los siguientes resultados:
+112808 frases totales analizadas, de las cuáles 96682 son etiquetadas como relevantes y   16126 como no relevantes. El alto porcentaje de frases relevantes indica que el lexicón tiene una riqueza aceptable.
+
+Se ha probado con dos conjuntos pre-entrenados de \textit{embeddings} uno de Google y otro de Glove. En el caso del Modelo de Google, el cuál cuenta con un diccionario de $4000000$ de palabras
 
 \section{Experimentos}
 \label{sec:lexis}
@@ -471,7 +475,7 @@ Por otra parte, se ha tenido en consideración el uso de un diccionario médico ab
 \begin{figure}
   \centering
   \includegraphics[width=14cm, keepaspectratio]{img/2016_results_mod.png}
-  \caption{Resultados 2018}
+  \caption{Resultados 2016}
   \label{fig:gantt}
 \end{figure}  
 

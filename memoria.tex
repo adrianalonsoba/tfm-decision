@@ -303,6 +303,7 @@ Este submódulo construye una matriz de términos por documentos \cite{anandarajan
 
 \begin{equation}
 	rel\_lex_{t} =\log\left(\frac{1}{N} \cdot \sum \limits_{p=1}^N \beta  \cdot tfidf(t)_p + (1-\beta) \cdot rep_p\right), \forall p \in C \,,
+\label{eq:4}
 \end{equation}
 
 donde $rep_p$ es la reputación del artículo $p$, $tfidf(t)_p$ es el valor TF-IDF del término $t$ en el artículo $p$ y $\beta \in (0,1)$ es otro parámetro que modula la importancia relativa del valor TF-IDF sobre la reputación. Cabe destacar que $tfidf(t)_p \in (0,1)$ ya que han sido normalizados por simplicidad y se aplica el logaritmo para normalizar la distribución.
@@ -318,6 +319,7 @@ Se construyen diferentes valores de relevancia para cada término específico $rel
 
 \begin{equation}
 	rel\_lex_{t}(y) = \rho \cdot rel\_lex_{t} + (1-\rho)\cdot rel\_lex_{t}(y-1) \,,
+\label{eq:5}
 \end{equation}
 
 donde $rel\_lex_{t}$ es la relevancia proporcionada por el marco de trabajo para el término $t$ y $rel\_lex_{t}(y-1)$ es la correspondiente al año anteruir $y-1$. El parámetro $\rho$ controla el peso del año anterior.
@@ -441,9 +443,13 @@ Al fijar los valores de saturación y normalizar en $0$ $1$ la reputación de todo
 \section{Creación de lexicones por año.}
 \label{sec:lex_creation}
 
-Siguiendo la metodología propuesta en la sección \ref{sec:lex}, 
+Siguiendo la metodología propuesta en la sección \ref{sec:lex}, se fijan los parámetros para las Ecuaciones \ref{eq:4} y \ref{eq:5}:
 
+Para la Ecuación \ref{eq:4}, se toma $\beta$ $=$ $0.5$ para dar la misma importancia a la reputación que a la componente léxica en la medida de relevancia.
+En la Ecuación \ref{eq:4} se toma $\rho$ $=$ $0.8$, lo cuál da un mayor peso a la relevancia actual del término, teniendo en cuenta algo de la relevancia del año anterior. Cabe destacar, que para aquellos términos que dejen de estar presentes de un año para otro, su relevancia actual es de $(1-\rho) 0.2$. Que un término desaparezca por completo de un año para otro es indicativo de ser poco relevante y aunque se mantiene en el lexicón del año actual, su relevancia es penalizada. Por otra parte, a aquellos términos nuevos para cada lexicón (no aparecen en años anteriores) se les da toda larelevancia correspondiente, al ser considerados términos de relevancia emergente.
 Por motivos obvios, el lexicón correspondiente al año 2015 no cuenta con factor de memoria de los años anteriores, ya que este actúa como semilla.
+
+Por otra parte, se ha tenido en consideración el uso de un diccionario médico abierto para darle más peso a los términos estrictamente médicos y así penalizar la relevancia de términos de carácter académico, típicos en el lenguaje de todos los artículos de investigación. En concreto, los mejores resultados se han obtenido dándole un 80 por ciento del peso a aquellos términos del diccionario médico y el resto a los que no están. Esto provoca una separación en la poblaciones claramente visible en los histogramas de las relevancias de los lexicones (ver Figura \ref{fig:hists}). Conforme se aumenta de año, puede verse un ensanchamiento de la población de los términos que se encuentran en el diccionario, fruto de la adición de los términos de años anteriores.
 
 \begin{figure}[htbp]
 \centering

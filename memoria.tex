@@ -32,6 +32,9 @@
 \usepackage[nottoc, notlot, notlof, notindex]{tocbibind} %% Opciones de índice
 \usepackage{latexsym}  %% Logo LaTeX
 
+\usepackage{graphicx} % figuras
+\usepackage{subfigure} % subfiguras
+
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
@@ -320,7 +323,7 @@ Se construyen diferentes valores de relevancia para cada término específico $rel
 donde $rel\_lex_{t}$ es la relevancia proporcionada por el marco de trabajo para el término $t$ y $rel\_lex_{t}(y-1)$ es la correspondiente al año anteruir $y-1$. El parámetro $\rho$ controla el peso del año anterior.
 
 \section{Creación del la red neuronal} 
-\label{sec:lex}
+\label{sec:red}
 
 Por muy grande que sea el corpus que se utilice para la creación de los lexicones, es virtualmente imposible contar con la relevancia de todos los términos existentes. Por tanto, se ha desarrollado una Red Neuronal Convolucional (CNN, por sus siglas en inglés)\cite{poria2015deep} para servir de apoyo al sistema. El propósito de la red es predecir la relevancia de aquellas frases que no contengan ninguna palabra presente en el lexicón. En la Tabla \ref{tab:cnn} se puede ver la configuración de la misma, la cuál es una versión optimizada de la aproximación introducida en \cite{bhavsar2017natural}. Cabe destacar que la capa de \textit{embedding} utiliza un modelo pre-entrenado de Glove \cite{pennington2014glove} con un vocabulario de  $400,000$ palabras de  Wikipedia \cite{o2016wikipedia}. La capa de salida cuenta con activación \textit{softmax}, la cuál proporciona valores entre $0$ y $1$. En las capas ocultas se cuenta con convoluciones, funciones de activación  \textit{relu} y funciones de \textit{dropout}.
 
@@ -390,22 +393,81 @@ En caso de que el DOI no esté disponible, se devuelve el resultado de la Ecuació
 \cleardoublepage
 \chapter{Experimentos y resultados}
 \label{chap:resus}
-
-
-
+En este capítulo se presentan los experimentos realizados. En primer lugar se presenta un diagrama de Gantt con la planificación temporal del desarrollo, después se detallan los  diferentes lexicones creados, después las redes neuronales y, por último, los resultados evaluando la relevancia de diversos conjuntos de documentos.
 \section{Planificación temporal}
 \label{sec:planificacion-temporal}
-En la Figura \ref{fig:gantt} se puede ver un diagrama de Gantt\cite{wilson2003gantt} que refleja el tiempo empleado en cada una de las fases del proyecto.
+En la Figura \ref{fig:gant} se puede ver un diagrama de Gantt\cite{wilson2003gantt} que ilustra el tiempo empleado en cada una de las etapas del desarrollo.
+La primera parte, se corresponde con el estudio e investigación del estado del arte, el cuál ha comprendido desde el inicio hasta el final del proyecto. Después, la obtención, pre-procesado y almacenaje de los datos, lo cuál incluye parseo, limpieza, cálculo de resúmenes y reputaciones. En la fase de creación de lexicones se construyen 4 diferentes por año. De forma análoga, se crean 4 redes neuronales por año. Finalmente, se realizan diversos experimentos para evaluar el rendimiento del sistema completo.
 
 \begin{figure}
   \centering
   \includegraphics[width=16cm, keepaspectratio]{img/gantt.png}
   \caption{Diagrama de Gantt del desarrollo}
-  \label{fig:gantt}
-\end{figure}   
+  \label{fig:gant}
+\end{figure}  
+
+\section{Descarga y preprocesado de artículos}
+\label{sec:lexis} 
+
+Siguiendo la metodología expuesta en la sección \ref{sec:etl}, se procede a la descarga, limpieza y almacenaje de dos millones de artículos de Pubmed Central.
+De los mas de dos millones de artículos descargados, todos son parseados y limpiados, pero sólo se calcula el resumen y la reputación de cuatro conjuntos de $15000$ artículos, que se corresponden con los años 2015, 2016, 2017 y 2018, para cada uno de los cuáles se construye un lexicón único. Se elige el número $15000$ porque en pruebas anteriores se ha comprobado que es el número máximo de filas de la matriz de términos por documentos que cabe en la memoria del equipo de pruebas (16GB de RAM). 
+Se fijan los parámetros de modulación para cada una de las ecuaciones del cálculo de reputaciones:
+En primer lugar, para la ecuación \ref{eq:1} se fija $\alpha$ a $0.5$ dando el mismo peso al número de citas que a la reputación de los coautores, ya que un alto volumen de citas es indicativo de un alto nivel de reputación, no obstante, si se le diera aún mas peso, se penalizarían demasiado los artículos mas recientes. En la ecuación \ref{eq:3} las omegas se fijan de la siguiente manera:
+$\omega_1$ = 0.2, $\omega_2$ = 0.1, $\omega_3$ = 0.3, $\omega_4$ = 0.4
+
+Se decide dar más peso a los valores de veteranía y número de artículos publicados por el autor, ya que los otros dos parámetros, son valores que, aunque tienen relevancia, cuentan con un mayor nivel de subjetividad.
+
+Una vez fijados los parámetros de modulación, se fijan los valores de saturación a partir del percentil 90 de cada parámetro tomando una muestra de 5000 artículos aleatorios, ver Tabla \ref{tab:saturacion}. 
+
+\begin{table}[]
+\begin{center}
+
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Parámetro}       & \textbf{Saturación} \\ \hline
+Número de artículos      & 196                 \\ \hline
+citationVelocity         & 105                 \\ \hline
+influentialCitationCount & 208                 \\ \hline
+Seniority                & 34                  \\ \hline
+Citas del artículo       & 10                  \\ \hline
+\end{tabular}
+\caption{Valores de saturación}
+\label{tab:saturacion}
+\end{center}
+\end{table}
+
+Al fijar los valores de saturación y normalizar en $0$ $1$ la reputación de todos los artículos está también entre 0 y 1.
+
+\section{Creación de lexicones por año.}
+\label{sec:lex_creation}
+
+Siguiendo la metodología propuesta en la sección \ref{sec:lex}, 
+
+Por motivos obvios, el lexicón correspondiente al año 2015 no cuenta con factor de memoria de los años anteriores, ya que este actúa como semilla.
+
+\begin{figure}[htbp]
+\centering
+\subfigure[2015]{\includegraphics[width=70mm]{img/2015_hist.png}}
+\subfigure[2016]{\includegraphics[width=70mm]{img/2016_hist.png}}
+\subfigure[2017]{\includegraphics[width=70mm]{img/2017_hist.png}}
+\subfigure[2018]{\includegraphics[width=70mm]{img/2018_hist.png}}
+\caption{Histograma de relevancias para cada lexicón.} \label{fig:hists}
+\end{figure}
+
+
+\section{Creación de las redes neuronales por año.}
+\label{sec:lexis}
+
 
 \section{Experimentos}
-\label{sec:experimentos}
+\label{sec:lexis}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=14cm, keepaspectratio]{img/2016_results_mod.png}
+  \caption{Resultados 2018}
+  \label{fig:gantt}
+\end{figure}  
 
 
 
@@ -417,6 +479,14 @@ En la Figura \ref{fig:gantt} se puede ver un diagrama de Gantt\cite{wilson2003ga
 \cleardoublepage
 \chapter{Conclusiones}
 \label{chap:conclusiones}
+
+
+trabajos futuros:
+-mas pruebas variando los parámetros de modulación.
+-creación de sistema de embegddings con vocabulario y corpus médico.
+-Obtención de correferencias para cada término-
+-Utilizacion de una ontologia médica.
+-ampliacion del tamaño de los lexicones.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

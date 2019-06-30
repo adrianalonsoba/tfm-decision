@@ -20,6 +20,9 @@
 \contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{25}{section.3.4}
 \contentsline {chapter}{\numberline {4}Experimentos y resultados}{27}{chapter.4}
 \contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{27}{section.4.1}
-\contentsline {section}{\numberline {4.2}Experimentos}{27}{section.4.2}
-\contentsline {chapter}{\numberline {5}Conclusiones}{29}{chapter.5}
-\contentsline {chapter}{Bibliograf\'{\i }a}{31}{chapter*.7}
+\contentsline {section}{\numberline {4.2}Descarga y preprocesado de art\IeC {\'\i }culos}{28}{section.4.2}
+\contentsline {section}{\numberline {4.3}Creaci\'on de lexicones por a\~no.}{29}{section.4.3}
+\contentsline {section}{\numberline {4.4}Creaci\'on de las redes neuronales por a\~no.}{29}{section.4.4}
+\contentsline {section}{\numberline {4.5}Experimentos}{29}{section.4.5}
+\contentsline {chapter}{\numberline {5}Conclusiones}{31}{chapter.5}
+\contentsline {chapter}{Bibliograf\'{\i }a}{33}{chapter*.7}

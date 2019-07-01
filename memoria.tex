@@ -449,7 +449,7 @@ Para la Ecuación \ref{eq:4}, se toma $\beta$ $=$ $0.5$ para dar la misma importa
 En la Ecuación \ref{eq:4} se toma $\rho$ $=$ $0.8$, lo cuál da un mayor peso a la relevancia actual del término, teniendo en cuenta algo de la relevancia del año anterior. Cabe destacar, que para aquellos términos que dejen de estar presentes de un año para otro, su relevancia actual es de $(1-\rho) 0.2$. Que un término desaparezca por completo de un año para otro es indicativo de ser poco relevante y aunque se mantiene en el lexicón del año actual, su relevancia es penalizada. Por otra parte, a aquellos términos nuevos para cada lexicón (no aparecen en años anteriores) se les da toda larelevancia correspondiente, al ser considerados términos de relevancia emergente.
 Por motivos obvios, el lexicón correspondiente al año 2015 no cuenta con factor de memoria de los años anteriores, ya que este actúa como semilla.
 
-Por otra parte, se ha tenido en consideración el uso de un diccionario médico abierto para darle más peso a los términos estrictamente médicos y así penalizar la relevancia de términos de carácter académico, típicos en el lenguaje de todos los artículos de investigación. En concreto, los mejores resultados se han obtenido dándole un 80 por ciento del peso a aquellos términos del diccionario médico y el resto a los que no están. Esto provoca una separación en la poblaciones claramente visible en los histogramas de las relevancias de los lexicones (ver Figura \ref{fig:hists}). Conforme se aumenta de año, puede verse un ensanchamiento de la población de los términos que se encuentran en el diccionario, fruto de la adición de los términos de años anteriores.
+Por otra parte, se ha tenido en consideración el uso de un diccionario médico abierto para darle más peso a los términos estrictamente médicos y así penalizar la relevancia de términos de carácter académico, típicos en el lenguaje de todos los artículos de investigación. En concreto, los mejores resultados se han obtenido dándole un 80 por ciento del peso a aquellos términos del diccionario médico y el resto a los que no están. Essto provoca una separación en la poblaciones claramente visible en los histogramas de las relevancias de los lexicones (ver Figura \ref{fig:hists}). Conforme se aumenta de año, puede verse un ensanchamiento de la población de los términos que se encuentran en el diccionario, fruto de la adición de los términos de años anteriores.
 
 \begin{figure}[htbp]
 \centering
@@ -467,7 +467,7 @@ Por otra parte, se ha tenido en consideración el uso de un diccionario médico ab
 Para crear el conjunto de entrenamiento, se cuenta con mas de $100000$ artículos de cada año no utilizados para la creación de los lexicones. Siguiendo el procedimiento descrito en la Sección \ref{sec:red}, se crea un conjunto con $320000$ frases etiquetadas para entrenamiento y $80000$ para test para los 4 lexicones. Se etiquetan como relevantes aquellas frases que contienen 4 o más sustantivos que tengan relevancia $0.7$ o mayor. Se utiliza este valor de corte porque es a partir del cuál se encuentra la mayoría de los términos mas relevantes de la población perteneciente al diccionario médico. Siguiendo este criterio, se realiza un análisis exploratorio con $1000$ del año 2015 no utilizados para la creación del lexicón del que se obtienen los siguientes resultados:
 112808 frases totales analizadas, de las cuáles 96682 son etiquetadas como relevantes y   16126 como no relevantes. El alto porcentaje de frases relevantes indica que el lexicón tiene una riqueza aceptable.
 
-Se ha probado con dos conjuntos pre-entrenados de \textit{embeddings} uno de Google y otro de Glove. En el caso del Modelo de Google, el cuál cuenta con un diccionario de $4000000$ de palabras
+Se ha probado con dos conjuntos pre-entrenados de \emph{Word2vect} \cite{goldberg2014word2vec} uno de Google y otro de Glove. En el caso del Modelo de Google, el cuál cuenta con un diccionario de $3000000$ de palabras
 
 \section{Experimentos}
 \label{sec:lexis}
@@ -478,7 +478,6 @@ Se ha probado con dos conjuntos pre-entrenados de \textit{embeddings} uno de Goo
   \caption{Resultados 2016}
   \label{fig:gantt}
 \end{figure}  
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

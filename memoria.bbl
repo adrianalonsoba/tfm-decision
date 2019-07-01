@@ -141,4 +141,10 @@ James~M Wilson.
 \newblock {\em European Journal of Operational Research}, 149(2):430--437,
   2003.
 
+\bibitem{goldberg2014word2vec}
+Yoav Goldberg and Omer Levy.
+\newblock word2vec explained: deriving mikolov et al.'s negative-sampling
+  word-embedding method.
+\newblock {\em arXiv preprint arXiv:1402.3722}, 2014.
+
 \end{thebibliography}

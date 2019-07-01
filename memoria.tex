@@ -489,11 +489,14 @@ Por otra parte, utilizando el modelo de Glove, el cuál cuenta con $400000$ palab
 \section{Experimentos}
 \label{sec:lexis}
 
+Se han analizado un total de $8000$ artículos con el sistema completo, $2000$ para cada año, prediciendo los artículos de cada año con el lexicón y la red del año anterior, a excepción de los artículos del año 2015, para los cuáles se ha utilizado la red y el lexicón del mismo año. Se pretende evaluar si el sistema rinde bien de un año para otro o si funciona mejor para predecir la relevancia de artículos del mismo año.
+En la Figura \ref{fig:2016_results} se puede ver una representación de variables dos a dos de los resultados de predicción del año $2016$ con la red y el lexicón del $2015$. Se ha calculado la relevancia con los soguientes parámetros:
+
 \begin{figure}
   \centering
   \includegraphics[width=14cm, keepaspectratio]{img/2016_results_mod.png}
   \caption{Resultados 2016}
-  \label{fig:gantt}
+  \label{fig:2016_results}
 \end{figure}  
 
 

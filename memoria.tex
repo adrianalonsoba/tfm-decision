@@ -220,17 +220,27 @@ La memoria tiene los siguientes capítulos fundamentales:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-\chapter{Estado del arte}
+\chapter{Estado de la cuestión}
+\label{sec:alrepus}
+
+En este capítulo se hace un análisis de la literatura relacionada con las diferentes características del presente trabajo. Se describen ideas utilizadas, modificadas y/ó descartadas con sus correspondientes referencias.
+
+\section{Relevancia de documentos}
+\label{sec:genlex}
+
+Se define relevancia como importacia o cualidad de destacable. A lo largo de los años, se han propuesto diferentes aproximaciones matemáticas que determinan la relevancia de un texto, concepto o término. Debido a su simplicidad, eficacia y bajo coste computacional, el algoritmo emph{TF-IDF}(Term frequency - Inverse Document Frequency) \cite{ramos2003using} ha sido el más utilizado por la comunidad científica y, por esos mismos motivos es empleado en este trabajo. Parte de la asunción de que cuanto más sea repetido un término o concepto dentro de un documento, más relevante es (Term Frequency) dentro de ese texto. No obstante, si ese término es muy común en un conjunto de textos, su relevancia baja (Inverse Documento Frequency).
+ A pesar de sus virtudes, sólo tener en cuenta la parte frecuencial de los términos le resta potencial, de ahí que la comunidad científica haya propuesto numerosas modificaciones \cite{wang2019feature} con resultados desiguales para resolver sus limitaciones, como el TF-IGM \cite{chen2016turning}
+
+\section{Generación automática de lexicones}
+\label{sec:genlex}
 
 
 \section{Algoritmos de reputación}
-\label{sec:alrepus}
+\label{sec:repusalg}
 
-
-\section{Obtención de relevancias}
-\label{sec:oreles}
-
-
+\section{Redes neuronales aplicadas a texto}
+\label{sec:neuraltext}
+¿¿¿¿¿¿¿¿¿¿¿¿??????????????
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DISEÑO E IMPLEMENTACIÓN %
@@ -498,6 +508,20 @@ En la Figura \ref{fig:2016_results} se puede ver una representación de variables
   \caption{Resultados 2016}
   \label{fig:2016_results}
 \end{figure}  
+
+\begin{figure}
+  \centering
+  \includegraphics[width=14cm, keepaspectratio]{img/2016_results_mod.png}
+  \caption{Resultados 2016 }
+  \label{fig:2016_results}
+\end{figure} 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=14cm, keepaspectratio]{img/2018_results.png}
+  \caption{Resultados 2018 }
+  \label{fig:2016_results}
+\end{figure} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -507,7 +507,7 @@ En la Ecuación \ref{eq:7}, se toma $\theta$ = $0.8$ dando la mayor parte del pes
 Por otra parte, en la Ecuación \ref{eq:8} se toma $\gamma$ = $0.6$ dando la mayor parte del peso al resultado de la Ecuación \ref{eq:7}.
 En la Figura \ref{fig:2016_results} se puede ver una representación de variables dos a dos de los resultados de predicción del año $2016$ con la red y el lexicón del $2015$. 
 
-Puede observarse la poca influencia que tienen los valores de reputación de la red neuronal dsda sobre la relevancia total del sistema incluyendo la reputación ds. Por otra parte.
+Puede observarse la poca influencia que tienen los valores de reputación de la red neuronal sobre la relevancia total del sistema incluyendo la reputación, lo cuál es indicativo de que las frases cuya relevancia se desconoce tienen poca relevancia (buen funcionamiento de la red) que a su vez es consecuencia del buen funcionamiento del lexicón, ya que cerca del 90 porciento de las frases tienen relevancia conocida.
 
 \begin{figure}
   \centering
@@ -516,6 +516,11 @@ Puede observarse la poca influencia que tienen los valores de reputación de la r
   \label{fig:2016_results}
 \end{figure}  
 
+Aunque se han analizado documentos para los siguientes años, de las gráficas se extraen las mismas conclusiones, ya que tienen distribuciones muy parecidas.
+
+Por otra parte, en la Figura \ref{fig:rel_tab} puede verse una tabla con los $15$ resultados de mayor relevancia del caso anterior. En en todos los casos, los valores de reputación son elevados, lo que está también acorde con lo elevados que son los valores de la puntuación del lexicón exclusivamente. En todos los casos el valor de relevancia proporcionado por la red neuronal es muy baja o oncluso $0$, reforzando el carácter de apoyo de las red neuronal.
+En todos los casos se trata de artículos de gran impacto y número de citas.
+
 \begin{figure}
   \centering
   \includegraphics[width=16cm, keepaspectratio]{img/kib1.png}
@@ -523,12 +528,6 @@ Puede observarse la poca influencia que tienen los valores de reputación de la r
   \label{fig:rel_tab}
 \end{figure}  
 
-\begin{figure}
-  \centering
-  \includegraphics[width=14cm, keepaspectratio]{img/2018_results.png}
-  \caption{Resultados 2018 }
-  \label{fig:2016_results}
-\end{figure} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

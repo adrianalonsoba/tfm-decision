@@ -174,16 +174,14 @@ En este capítulo introductorio se presenta, en primer lugar, el contexto científ
 \section{Contexto}
 \label{sec:contexto}
 
-La comunidad investigadora invierte la mayor parte de su tiempo  documentándose, investigando literatura previa y el estado del arte. A menudo, la relevancia de los diferentes tópicos sobre los que se investiga fluctúa en gran medida con el tiempo, lo que provoca que a menudo los investigadores pierdan mucho tiempo con literatura desfasada o poco relevante. Por tanto, este trabajo introduce un marco de trabajo completo que tiene como finalidad organizar y medir la relevancia de artículos de investigación.
+La comunidad investigadora invierte la mayor parte de su tiempo  documentándose, investigando literatura previa y el estado del arte. A menudo, la relevancia de los diferentes tópicos sobre los que se investiga fluctúa en gran medida con el tiempo, lo que provoca que, en ocaciones, los investigadores pierdan mucho tiempo con literatura desfasada o poco relevante. Por tanto, este proyecto introduce un marco de trabajo completo que tiene como finalidad organizar y medir la relevancia de artículos de investigación.
 
-Dado que se trabaja con información textual, se utilizan técnicas de Procesamiento de Lenguaje Natural (NLP, por sus siglas en inglés) \cite{jurafsky2014speech} que sirven para poder tratar con este tipo de información desde un punto de vista computacional. A través de estas técnicas, las cuáles se combinan con métricas de reputación \cite{josang2007survey}, se construye un lexicón de relevancias para evaluar la relevancia de los documentos de un modo similar a un análisis de sentimientos \cite{de2018visual}. Para complementar este lexicón, se emplean técnicas de Deep Learning \cite{lecun2015deep} para evaluar la relevancia de los términos cuya relevancia sea desconocida por el lexicón.
+Dado que se trabaja con información textual, se utilizan técnicas de Procesamiento de Lenguaje Natural (NLP, por sus siglas en inglés) \cite{jurafsky2014speech} que sirven para poder tratar con este tipo de información desde un punto de vista computacional. A través de estas técnicas, las cuáles se combinan con métricas de reputación \cite{josang2007survey}, se construye un lexicón de relevancias para evaluar la relevancia de los documentos de un modo similar a un análisis de sentimientos \cite{de2018visual}. Para complementar este lexicón, se emplean técnicas de Deep Learning \cite{lecun2015deep} para evaluar la relevancia de los términos cuya relevancia sea desconocida por el lexicón y la reputación de cada artículo en caso de estar disponible.
 
 \subsection{Dominio de aplicación}
 \label{sec:dominio}
 
-Aunque este marco de trabajo puede ser entrenado para cualquier dominio de investigación científica, los experimentos se han llevado a cabo en el dominio médico. Se han descargado y parseado mas de dos millones de artículos de investigación médica provenienyes de Pubmed Central . Cabe destacar que, aunque los artículos de investigacion podrían ser considerados un dominio de aplicación por si mismo, la ciencia abarca demasiados temas para que el sistema funciona de forma deseable, por tanto, el sistema sólo debe ser utilizado apra evaluar los documentos del mismo dominio de aplicación concreto con el que haya sido entrenado.
-
-
+Aunque este marco de trabajo puede ser entrenado para cualquier dominio de investigación científica, los experimentos se han llevado a cabo en el dominio médico. Se han descargado y parseado mas de dos millones de artículos de investigación médica provenientes de Pubmed Central . Cabe destacar que, aunque los artículos de investigacion podrían ser considerados un dominio de aplicación por si mismo, la ciencia abarca demasiados temas para que el sistema funcione de forma deseable, por tanto, el sistema sólo debe ser utilizado para evaluar los documentos del mismo dominio de aplicación concreto con el que haya sido entrenado.
 
 \section{Objetivos}
 \label{sec:objetivos}
@@ -208,7 +206,7 @@ La memoria tiene los siguientes capítulos fundamentales:
 
 \begin{enumerate}
 \item Introducción.
-\item Estado del arte: En este capítulo se revisa la literatura en la que se apoya el siguiente trabajo, explicando ideas utilizadas y otras descartadas
+\item Estado del arte: En este capítulo se revisa la literatura en la que se apoya el siguiente trabajo, explicando ideas utilizadas y otras descartadas.
 \item Propuesta: Se trata del capítulo central y más importante, en el cuál se describe la propuesta del marco de trabajo completo.
 \item Experimentos y resultados: Se describe el caso uso del marco de trabajo, presentando los diferentes experimentos realizados.
 \item Conclusiones: En este capítulo final se evalúan los resultados obtenidos y objetivos completados. También se revisan posibles líneas futuras de investigación y mejora.
@@ -227,13 +225,13 @@ En este capítulo se hace un análisis de la literatura relacionada con las difere
 
 \section{Relevancia de documentos}
 \label{sec:genlex}
-Se define relevancia como importacia o cualidad de destacable. A lo largo de los años, se han propuesto diferentes aproximaciones matemáticas que determinan la relevancia de un texto, concepto o término. Debido a su simplicidad, eficacia y bajo coste computacional, el algoritmo \emph{TF-IDF}(Term frequency - Inverse Document Frequency) \cite{ramos2003using} ha sido el más utilizado por la comunidad científica. Parte de la asunción de que cuanto más sea repetido un término o concepto dentro de un documento, más relevante es (Term Frequency) dentro del mismo. No obstante, si ese término es muy común en un conjunto de textos, su relevancia baja (Inverse Documento Frequency).
+Se define relevancia como importancia o cualidad de destacable. A lo largo de los años, se han propuesto diferentes aproximaciones matemáticas que determinan la relevancia de un texto, concepto o término. Debido a su simplicidad, eficacia y bajo coste computacional, el algoritmo \emph{TF-IDF}(Term frequency - Inverse Document Frequency) \cite{ramos2003using} ha sido el más utilizado por la comunidad científica. Parte de la asunción de que cuanto más sea repetido un término o concepto dentro de un documento, más relevante es (Term Frequency) dentro del mismo. No obstante, si ese término es muy común en un conjunto de textos, su relevancia baja (Inverse Documento Frequency).
  A pesar de sus virtudes, sólo tener en cuenta la parte frecuencial de los términos le resta potencial, de ahí que la comunidad científica haya propuesto numerosas modificaciones \cite{wang2019feature} con resultados desiguales para resolver sus limitaciones, como el STW (supervised term weighting) \cite{debole2004supervised}, TF-RF(Term Frequency) \cite{lan2008supervised} o el más reciente TF-IGM \cite{chen2016turning}. Todas estas aproximaciones son interesantes, pero dada su mayor complejidad y falta de continuidad de uso por la comunidad investigadora, se ha optado por la utilización del TF-IDF, quedando su comparación con el resto de aproximaciones para trabajos futuros.
 
 \section{Generación automática de lexicones}
 \label{sec:genlex}
 
-La generación automática de lexicones de propósito específico es un desafío al que la comunidad científica lleva años enfrentándose. La mayoría de lexicones creados hasta la fecha están elaborados, en el mejor de los casos, con métodos semi supervisados \cite{bracewell2008semi}. La mayoría de las aproximaciones realizadas hasta la fecha tienen como objetivo el análisis de sentimientos \cite{pang2008opinion}, siendo el mayor exponente SentiWordNet \cite{esuli2007sentiwordnet}, el cuál está creado con técnicas de aprendizaje supervisado. Hay alguna propuesta novedosa de ténicas automáticas, como la de propuesta en \cite{wu2019automatic}, que tiene en cuenta caractéristica sintácticas y semánticas de las palabras para construir un diccionario de sentiemientos. Parte del presente trabajo requiere de un lexicón generado de manera automática, pero de relevancias, no de sentimientos, por tanto este tipo de aproximaciones u otras mas recientes como la de \cite{deng2019sentiment} no son aplicables.
+La generación automática de lexicones de propósito específico es un desafío al que la comunidad científica lleva años enfrentándose. La mayoría de lexicones creados hasta la fecha están elaborados, en el mejor de los casos, con métodos semi supervisados \cite{bracewell2008semi}. La mayoría de las aproximaciones realizadas tienen como objetivo el análisis de sentimientos \cite{pang2008opinion}, siendo el mayor exponente SentiWordNet \cite{esuli2007sentiwordnet}, el cuál está creado con técnicas de aprendizaje supervisado. Hay alguna propuesta novedosa de ténicas automáticas, como la introducida por \cite{wu2019automatic}, que tiene en cuenta caractéristicas sintácticas y semánticas de las palabras para construir un diccionario de sentiemientos. Parte del presente trabajo requiere de un lexicón generado de manera automática, pero de relevancias, no de sentimientos, por tanto este tipo de aproximaciones u otras mas recientes como la de \cite{deng2019sentiment} no son aplicables.
 
 \section{Algoritmos de reputación}
 \label{sec:repusalg}
@@ -243,7 +241,7 @@ Los algoritmos de reputación tienen como objetivo cuantificar la confianza de un
 \section{Redes neuronales aplicadas a texto}
 \label{sec:neuraltext}
 
-Las redes neuronales sólo admiten números como entrada, por tanto, para poder usarlas con información textual, se debe encontrar una forma de codificar el texto en números y vectores. La forma más sencilla de hacerlo podría ser la de  asignar un número único de forma arbitraria a cada una de las diferentes palabras del corpus. Esto puede parecer suficiente para que la red neuronal aprenda patrones y pueda hacer predicciones. No obstante, esta codificación no contiene ninguna información sobre cómo las palabras se relaciones entre sí de manera semántica, por tanto se utilizan aproximaciones como el \textit{word embedding} \cite{tang2014learning}. Lo cuál consiste en mapear las relaciones semánticas de palabras en vectores, de forma que por ejemplo, los sinónimos tendrán vectores parecidos. Esta representación geométrica de el lenguaje elimina ruido y facilita el trabajo de las redes neuronales. Se ha utilizado un word embeding pre-entrenado con un vocabulario de $400000$ palabras de $100$ dimensiones de dominio general provenientes de Glove \cite{pennington2014glove}, queda por tanto, el entrenamiento propio de word embeddings para trabajos futuros. 
+Las redes neuronales sólo admiten números como entrada, por tanto, para que puedan ser usadas con información textual, se debe encontrar una forma de codificar el texto en números y vectores. La forma más sencilla de hacerlo podría ser la de asignar un número único de forma arbitraria a cada una de las diferentes palabras del corpus. Esto puede parecer suficiente para que la red neuronal aprenda patrones y pueda hacer predicciones. No obstante, esta codificación no contiene ninguna información sobre cómo las palabras se relacionan entre sí de manera semántica, por tanto se utilizan aproximaciones como el \textit{word embedding} \cite{tang2014learning}. Lo cuál consiste en mapear las relaciones semánticas de palabras en vectores, de forma que por ejemplo, los sinónimos tendrán vectores parecidos. Esta representación geométrica de el lenguaje elimina ruido y facilita el trabajo de las redes neuronales. Se ha utilizado un word embeding pre-entrenado con un vocabulario de $400000$ palabras de $100$ dimensiones de dominio general provenientes de Glove \cite{pennington2014glove}, queda por tanto, el entrenamiento propio de word embeddings para trabajos futuros. 
 Más allá de representación óptima de palabras como vectores, la información textual tiene un orden temporal o secuencial, por lo que la utilización de redes neuronales convolucionales (CNN) \cite{poria2015deep} es una buena solución para tareas de clasificación de texto por encima de las redes neuronales recurrentes, ya que ofrecen un rendimiento similar con un menor coste computacional \cite{chollet2018deep}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -271,7 +269,7 @@ En primer lugar se entra en detalle en cómo se construye Relevance lexicon, desp
 
 \section{Creación del lexicón de relevancias} 
 \label{sec:lex}
-El lexicón de relevancias tiene un papel fundamental a la hora de estimar la relevancia de los artículos, en concreto, contiene la relevancia de las palabras de el dominio de aplicación utilizado para crear el mismo. Para la creación del lexicón se ha diseñado un marco de trabajo completo, cuya arquitectura puede verse en la Figura \ref{fig:train_lexicon}. Esta cuenta con un módulo de extracción, transformación y carga (ETL por sus siglas en inglés)\cite{vassiliadis2009survey}, un módulo de gestión de conomicimiento (Knowledge managment) y uno de visualización. Se cuenta, además, con dos bases de datos, una orientada a documentos\cite{han2011survey}(Document knowledge consolidation) y una ElasticSearch\cite{gormley2015elasticsearch} para visualización con Kibana \cite{gupta2015kibana}.
+El lexicón de relevancias tiene un papel fundamental a la hora de estimar la relevancia de los artículos, en concreto, contiene la relevancia de las palabras del dominio de aplicación utilizado para crear el mismo. Para la creación del lexicón se ha diseñado un marco de trabajo completo a parte, cuya arquitectura puede verse en la Figura \ref{fig:train_lexicon}. Esta cuenta con un módulo de extracción, transformación y carga (ETL por sus siglas en inglés)\cite{vassiliadis2009survey}, un módulo de gestión de conomicimiento (Knowledge managment) y uno de visualización. Se cuenta, además, con dos bases de datos, una orientada a documentos\cite{han2011survey}(Document knowledge consolidation) y una ElasticSearch\cite{gormley2015elasticsearch} para visualización con Kibana \cite{gupta2015kibana}.
 
 \begin{figure}
   \centering
@@ -287,7 +285,7 @@ El módulo ETL se encarga de la obtención y el preprocesado del corpus de artícul
 Corpus processor obtiene artículos de Pubmed Central\footnote{\url{https://www.ncbi.nlm.nih.gov/pmc/}} utilizando técnicas de web scrapping \cite{mitchell2018web}. Estos artículos en formato XML \cite{bray2000extensible}, son parseados y almacenados en formato JSON \cite{crockford2006application} en Document knowledge consolidation con una estructura de párrafos y frases, eliminando tablas, gráficas u otros artefactos no aprovechables por el sistema.
 Una vez un documento se almacena en la base de datos, se procede a calcular su resumen automático aplicando el clásico algoritmo Text Rank \cite{mihalcea2004textrank} utilizando una popular implementación en Python \cite{DBLP:journals/corr/BarriosLAW16}. Este tipo de resúmenes ofrecen una ordenación de las frases de un documento por relevancia, sirviendo como factor de filtrado de información poco relevante o redundante y a la vez como factor de compresión, haciendo la información más manejable en memoria. Se obtiene un 20 porciento del tamaño original de los artículos y se almacena como un nuevo artibuto del documento en la base de datos.
 
-Una vez preprocesados y almacenados los artículos, emph{Reputation calculator} calcula la reputación de los mismos para que esta sea añadida como nuevo atributo y ser utilizada posteriormente por el módulo Knowledge managment.
+Una vez preprocesados y almacenados los artículos, \emph{Reputation calculator} calcula la reputación de los mismos para que esta sea añadida como nuevo atributo y ser utilizada posteriormente por el módulo Knowledge managment.
 El algoritmo de reputación empleado es una adaptación del introducido en el artículo \cite{fernandez2018unified}. La reputación a priori de un artículo viene dada por:
 \begin{equation}
 \label{eq:1}
@@ -301,7 +299,7 @@ donde  $rep\_authors_{p}$ es la reputación media del los autores del artículo y 
 \end{equation}
 
 donde $\sum_{i=1}^4\omega_i=1$. El parámetro $inf\_citation\_count$ representa el número de citas altamente influyentes del autor. \cite{valenzuela2015identifying}. $citation\_velocity$ indica lo popular que es el autor durante los últimos 3 años. $seniority$ es la cantidad de años transcurridos entre la primera y última publicación del autor. Por último, $papers$ es el número total de artículos publicados por el autor. 
-Estos parámetros son extraídos de  la API REST de Semantic Scholar\cite{semanticscholar2018sc} a través del Identificador Digital de Objeto (DOI, por sus siglas en inglés)\cite{paskin2010digital} del documento. Una vez que el módulo Reputation Calculator ha calculado la reputación del artículo, esta se añade a \emph{Document knowledge consolidation}, como un atributo nuevo.
+Estos parámetros son extraídos de la API REST de Semantic Scholar\cite{semanticscholar2018sc} a través del Identificador Digital de Objeto (DOI, por sus siglas en inglés)\cite{paskin2010digital} del documento. Una vez que el módulo Reputation Calculator ha calculado la reputación del artículo, esta se añade a \emph{Document knowledge consolidation}, como un atributo nuevo.
 
 \subsection{Módulo de Gestión del conocimiento} 
 \label{sec:know}
@@ -329,7 +327,6 @@ Este componente construye y organiza el lexicón a partir del texto normalizado. 
 
 Se organizan y construyen lexicones por cada conjunto de artículos correspondientes a cada año disponible, teniendo en cuenta la evolución de la relevancia de cada término a lo largo de los años. De esta manera se puede modular la curva de olvido \cite{averell2011form} y tener en consideración las tendencias del dominio de aplicación.
 
-
 Se construyen diferentes valores de relevancia para cada término específico $rel\_lex_{t}(y)$ de acuerdo a un año específico $y$, manteniendo las palabras del año anterior en el nuevo de la forma:
 
 \begin{equation}
@@ -337,14 +334,14 @@ Se construyen diferentes valores de relevancia para cada término específico $rel
 \label{eq:5}
 \end{equation}
 
-donde $rel\_lex_{t}$ es la relevancia proporcionada por el marco de trabajo para el término $t$ y $rel\_lex_{t}(y-1)$ es la correspondiente al año anteruir $y-1$. El parámetro $\rho$ controla el peso del año anterior.
+donde $rel\_lex_{t}$ es la relevancia proporcionada por el marco de trabajo para el término $t$ y $rel\_lex_{t}(y-1)$ es la correspondiente al año anterior $y-1$. El parámetro $\rho$ controla el peso del año anterior.
 
 \section{Creación del la red neuronal} 
 \label{sec:red}
 
-Por muy grande que sea el corpus que se utilice para la creación de los lexicones, es virtualmente imposible contar con la relevancia de todos los términos existentes. Por tanto, se ha desarrollado una Red Neuronal Convolucional (CNN, por sus siglas en inglés)\cite{poria2015deep} para servir de apoyo al sistema. El propósito de la red es predecir la relevancia de aquellas frases que no contengan ninguna palabra presente en el lexicón. En la Tabla \ref{tab:cnn} se puede ver la configuración de la misma, la cuál es una versión optimizada de la aproximación introducida en \cite{bhavsar2017natural}. Cabe destacar que la capa de \textit{embedding} utiliza un modelo pre-entrenado de Glove \cite{pennington2014glove} con un vocabulario de  $400,000$ palabras de  Wikipedia \cite{o2016wikipedia}. La capa de salida cuenta con activación \textit{softmax}, la cuál proporciona valores entre $0$ y $1$. En las capas ocultas se cuenta con convoluciones, funciones de activación  \textit{relu} y funciones de \textit{dropout}.
+Por muy grande que sea el corpus que se utilice para la creación de los lexicones, es virtualmente imposible contar con la relevancia de todos los términos existentes. Por tanto, se ha empleado una Red Neuronal Convolucional (CNN, por sus siglas en inglés)\cite{poria2015deep} para servir de apoyo al sistema. El propósito de la red es predecir la relevancia de aquellas frases que no contengan ninguna palabra presente en el lexicón. En la Tabla \ref{tab:cnn} se puede ver la configuración de la misma, la cuál es una versión optimizada de la aproximación introducida en \cite{bhavsar2017natural}. Cabe destacar que la capa de \textit{embedding} utiliza un modelo pre-entrenado de Glove \cite{pennington2014glove} con un vocabulario de  $400,000$ palabras de  Wikipedia \cite{o2016wikipedia}. La capa de salida cuenta con activación \textit{softmax}, la cuál proporciona valores entre $0$ y $1$. En las capas ocultas se cuenta con convoluciones, funciones de activación  \textit{relu} y funciones de \textit{dropout}.
 
-Para construir la red, se propone la siguiente metodología: En primer lugar, el usuario selecciona un conjunto de artículos del corpus que no hayan sido utilizados para construir el lexicón. Después, se  procesa el texto separando por frases y términos, eliminando palabras vacías y lematizando de manera análoga a como se procede en el módulo de ETL, de esta manera se aumenta el número potencial de coincidencias entre el texto utilizado para la creación de la red y las palabras del lexicón. Se etiquetarán como relevantes ($1$) aquellas frases con mayor relevancia de acuerdo al lexicón y como no relevantes ($0$) las menor relevancia o aquellas que no contengan palabras del lexicón. Se define, por tanto, 
+Para construir la red, se propone la siguiente metodología: En primer lugar, el usuario selecciona un conjunto de artículos del corpus que no hayan sido utilizados para construir el lexicón. Después, se  procesa el texto separando por frases y términos, eliminando palabras vacías y lematizando de manera análoga a como se procede en el módulo de ETL, de esta manera se aumenta el número potencial de coincidencias entre el texto utilizado para la creación de la red y las palabras del lexicón. Se etiquetarán como relevantes ($1$) aquellas frases con mayor relevancia de acuerdo al lexicón y como no relevantes ($0$) las de menor relevancia o aquellas que no contengan palabras del lexicón. Se define, por tanto, 
 un umbral de relevancia $\epsilon$ para elegir el mínimo necesario de acuerdo a lo estricta que se quiere que sea la red neuronal. Finalmente se debe elegir el número de frases etiquetadas para conformar el conjunto de entrenamiento y test. La red neuronal resultante debería ser capaz de prececir la relevancias de las frases sin palabras del lexicón.
 \begin{table}[H]
 	\begin{center}
@@ -371,7 +368,7 @@ un umbral de relevancia $\epsilon$ para elegir el mínimo necesario de acuerdo a 
 \section{Estimación de relevancias de artículos} 
 \label{sec:full_process}
 
-Se ha diseñao un flujo de trabajo para ilustrar como funciona todo el proceso del marco de trabajo. Se comienza eligiendo un texto para evaluar y se concluye devolviendo su relevancia normalizada entre $0$ y $1$ (ver Figura. \ref{fig:pipeline}).
+Se ha diseñado un flujo de trabajo para ilustrar como funciona todo el proceso del marco de trabajo. Se comienza eligiendo un texto para evaluar y se concluye devolviendo su relevancia normalizada entre $0$ y $1$ (ver Figura. \ref{fig:pipeline}).
 
 \begin{figure}
   \centering
@@ -380,7 +377,7 @@ Se ha diseñao un flujo de trabajo para ilustrar como funciona todo el proceso de
   \label{fig:arquitectura}
 \end{figure}
 
-En primer el sistema detecta si el documento  cuya relevancia se desea conocer consiste en texto plano o un fichero (de tipo PDF, html o similar). En caso de ser un fichero, este parseado, limpiado y partido en frases y párrafos. Estas tareas se llevan a cabo en los pasos \emph{Parse to raw text} y \emph{Clean and tokenize sentences}, respectivamente.
+En primer el sistema detecta si el documento  cuya relevancia se desea conocer consiste en texto plano o un fichero (de tipo PDF, html o similar). En caso de ser un fichero, este es parseado, limpiado y partido en frases y párrafos. Estas tareas se llevan a cabo en los pasos \emph{Parse to raw text} y \emph{Clean and tokenize sentences}, respectivamente.
 
 Una vez se tienen mapeados los párrafos en listas de lemas de sustantivos, se consulta el lexicón por cada lista, acumulando el valor de relevancia de cada lema. En caso de que una frase no contenga ningún lema presente en el lexicón, la lista de lemas se tranforma en los vectores que entran a la red neuronal, que devuelve la predicción de relevancia. Estas tareas son llevadas a cabo por el módulo \emph{Relevance calculator}. Una vez recorridas todas las listas de lemas, la relevancia viene dada por la Ecuación:
 \begin{equation}
@@ -388,7 +385,7 @@ Una vez se tienen mapeados los párrafos en listas de lemas de sustantivos, se co
     \label{eq:7}
 \end{equation}
 
-donde $rel\_lex_p$ es la relevancia media del artcículo proporcionada por el lexicón, $\{s_k\}_{k=1}^K$ es el conjunto de frases cuya relevancia es desconocida y $rel\_neural$ es la relevancia predicha por la red neuronal para cada $s_k$. El parámetro $\theta \in (0,1)$ parameter modula la importancia relativa de la red neuronal.
+donde $rel\_lex_p$ es la relevancia media del artículo proporcionada por el lexicón, $\{s_k\}_{k=1}^K$ es el conjunto de frases cuya relevancia es desconocida y $rel\_neural$ es la relevancia predicha por la red neuronal para cada $s_k$. El parámetro $\theta \in (0,1)$ modula la importancia relativa de la red neuronal.
 
 En última instancia, en caso de que la entrada al sistema sea un documento y no texto plano, se comprueban los metadados del mismo para tratar de encontrar el DOI. En caso de estar disponible, el módulo \emph{Relevance calculator}, calcula su reputaciñón y esta es utilizada para calcular la relevancia final del documento, la cuál viene dada por:
 
@@ -505,7 +502,10 @@ Por otra parte, utilizando el modelo de Glove, el cuál cuenta con $400000$ palab
 \label{sec:lexis}
 
 Se han analizado un total de $8000$ artículos con el sistema completo, $2000$ para cada año, prediciendo los artículos de cada año con el lexicón y la red del año anterior, a excepción de los artículos del año 2015, para los cuáles se ha utilizado la red y el lexicón del mismo año. Se pretende evaluar si el sistema rinde bien de un año para otro o si funciona mejor para predecir la relevancia de artículos del mismo año.
-En la Figura \ref{fig:2016_results} se puede ver una representación de variables dos a dos de los resultados de predicción del año $2016$ con la red y el lexicón del $2015$. Se ha calculado la relevancia con los soguientes parámetros:
+En la Figura \ref{fig:2016_results} se puede ver una representación de variables dos a dos de los resultados de predicción del año $2016$ con la red y el lexicón del $2015$. Se ha calculado la relevancia con los siguientes parámetros:
+
+En la Ecuación \ref{eq:7}, se toma $\theta$ = $0.8$ dando la mayor parte del peso a la parte del lexicón, ya que la red funciona como apoyo al sistema.
+Por otra parte, en la Ecuación \ref{eq:8} se toma $\gamma$ = $0.6$ dando la mayor parte del peso al resultado de la en
 
 \begin{figure}
   \centering

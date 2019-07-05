@@ -10,21 +10,21 @@
 \contentsline {section}{\numberline {2.2}Generaci\'on autom\'atica de lexicones}{18}{section.2.2}
 \contentsline {section}{\numberline {2.3}Algoritmos de reputaci\'on}{18}{section.2.3}
 \contentsline {section}{\numberline {2.4}Redes neuronales aplicadas a texto}{18}{section.2.4}
-\contentsline {chapter}{\numberline {3}Propuesta}{19}{chapter.3}
-\contentsline {section}{\numberline {3.1}Arquitectura general}{19}{section.3.1}
-\contentsline {section}{\numberline {3.2}Creaci\'on del lexic\'on de relevancias}{20}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}M\'odulo ETL}{20}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}M\'odulo de Gesti\'on del conocimiento}{22}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Text filter}{22}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Text normalizer}{22}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Lexicon builder}{23}{subsection.3.2.5}
-\contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{23}{section.3.3}
-\contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{25}{section.3.4}
-\contentsline {chapter}{\numberline {4}Experimentos y resultados}{27}{chapter.4}
-\contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{27}{section.4.1}
-\contentsline {section}{\numberline {4.2}Descarga y preprocesado de art\IeC {\'\i }culos}{28}{section.4.2}
-\contentsline {section}{\numberline {4.3}Creaci\'on de lexicones por a\~no.}{29}{section.4.3}
-\contentsline {section}{\numberline {4.4}Creaci\'on de las redes neuronales por a\~no.}{29}{section.4.4}
-\contentsline {section}{\numberline {4.5}Experimentos}{31}{section.4.5}
-\contentsline {chapter}{\numberline {5}Conclusiones}{35}{chapter.5}
-\contentsline {chapter}{Bibliograf\'{\i }a}{37}{chapter*.7}
+\contentsline {chapter}{\numberline {3}Propuesta}{21}{chapter.3}
+\contentsline {section}{\numberline {3.1}Arquitectura general}{21}{section.3.1}
+\contentsline {section}{\numberline {3.2}Creaci\'on del lexic\'on de relevancias}{22}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}M\'odulo ETL}{22}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}M\'odulo de Gesti\'on del conocimiento}{24}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Text filter}{24}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Text normalizer}{24}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Lexicon builder}{25}{subsection.3.2.5}
+\contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{25}{section.3.3}
+\contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{27}{section.3.4}
+\contentsline {chapter}{\numberline {4}Experimentos y resultados}{29}{chapter.4}
+\contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{29}{section.4.1}
+\contentsline {section}{\numberline {4.2}Descarga y preprocesado de art\IeC {\'\i }culos}{30}{section.4.2}
+\contentsline {section}{\numberline {4.3}Creaci\'on de lexicones por a\~no.}{31}{section.4.3}
+\contentsline {section}{\numberline {4.4}Creaci\'on de las redes neuronales por a\~no.}{31}{section.4.4}
+\contentsline {section}{\numberline {4.5}Experimentos}{33}{section.4.5}
+\contentsline {chapter}{\numberline {5}Conclusiones}{37}{chapter.5}
+\contentsline {chapter}{Bibliograf\'{\i }a}{39}{chapter*.7}

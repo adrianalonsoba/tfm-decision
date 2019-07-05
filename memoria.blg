@@ -10,45 +10,45 @@ Warning--I didn't find a database entry for "valenzuela2015identifying"
 Warning--I didn't find a database entry for "paskin2010digital"
 Warning--I didn't find a database entry for "seinecleStopwords2016"
 Warning--empty institution in crockford2006application
-You've used 29 entries,
+You've used 36 entries,
             1791 wiz_defined-function locations,
-            622 strings with 8648 characters,
-and the built_in function-call counts, 6454 in all, are:
-= -- 584
-> -- 261
-< -- 7
-+ -- 100
-- -- 71
-* -- 381
-:= -- 1001
-add.period$ -- 89
-call.type$ -- 29
-change.case$ -- 25
+            659 strings with 10001 characters,
+and the built_in function-call counts, 8446 in all, are:
+= -- 774
+> -- 342
+< -- 10
++ -- 130
+- -- 94
+* -- 514
+:= -- 1293
+add.period$ -- 111
+call.type$ -- 36
+change.case$ -- 31
 chr.to.int$ -- 0
-cite$ -- 30
-duplicate$ -- 310
-empty$ -- 658
-format.name$ -- 71
-if$ -- 1465
+cite$ -- 37
+duplicate$ -- 402
+empty$ -- 848
+format.name$ -- 94
+if$ -- 1921
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 28
-newline$ -- 148
-num.names$ -- 29
-pop$ -- 106
+int.to.str$ -- 36
+missing$ -- 36
+newline$ -- 183
+num.names$ -- 36
+pop$ -- 128
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 150
+skip$ -- 202
 stack$ -- 0
-substring$ -- 385
-swap$ -- 79
-text.length$ -- 7
+substring$ -- 550
+swap$ -- 111
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 64
-width$ -- 31
-write$ -- 314
+while$ -- 85
+width$ -- 38
+write$ -- 392
 (There were 7 warnings)

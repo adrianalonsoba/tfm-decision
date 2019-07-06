@@ -16,7 +16,7 @@
 %% (las imágenes deben ir en PNG o JPG)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\pagestyle{empty}
 \documentclass[a4paper, 12pt]{book}
 %\usepackage[T1]{fontenc}
 
@@ -44,7 +44,7 @@
     urlcolor=black
 }
 
-\title{Marco de trabajo para evaluar la relevancia de los artículos en el dominio científico}
+\title{Marco de trabajo para evaluar la relevancia de artículos de dominio científico}
 \author{Adrián Alonso Barriuso}
 
 \renewcommand{\baselinestretch}{1.5}  %% Interlineado
@@ -104,13 +104,12 @@ Tutor : Dr. Alberto Fernández Isabel
 \thispagestyle{empty} % para que no se numere esta pagina
 
 \clearpage
-
+\thispagestyle{empty}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Dedicatoria
 
 \chapter*{}
-\pagenumbering{arabic}
-
+\thispagestyle{empty}
 \begin{flushright}
 \textit{Dedicado a \\
 mi sobrino, Alberto, algún día te explicaré todo esto....}
@@ -120,6 +119,7 @@ mi sobrino, Alberto, algún día te explicaré todo esto....}
 %%%% Agradecimientos
 
 \chapter*{Agradecimientos}
+\thispagestyle{empty}
 %\addcontentsline{toc}{chapter}{Agradecimientos} % si queremos que aparezca en el índice
 \markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado 
 
@@ -129,16 +129,24 @@ Gracias a mi familia y amigos por estar ahí cuando había que estar. Gracias a to
 %%%% Resumen
 
 \chapter*{Resumen}
+\thispagestyle{empty}
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
+
+Palabras clave:
 La comunidad investigadora se enfrenta cada vez a un mayor número de publicaciones y tendencias que deben atender a la hora hacer sus propias publicaciones. Estos tópicos y tendencias  son estado del arte en el momento de su publicación o presentación en conferencias, no obstante, pueden perder relevancia con el paso del tiempo. Esta medida de relevancia de publicaciones representa un desafío para la comunidad investigadora, la cuál invierte mucho tiempo leyendo literatura a menudo desfasada o poco relevante. Para abordar este problema, se introduce un marco de trabajo para evaluar la relevancia de artículos científicos a través de, principalmente, un lexicón y una red neuronal. Se han llevado a cabo diversos experimentos aplicados al dominio de la medicina que demuestran el buen funcionamiento del marco de trabajo.
+
+Palabras clave: Medida de relevancia, Generación de diccionario, Reputación de artículos, Relevancia científica, Sistema basado en conocimiento.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen en inglés
 
-\chapter*{Summary}
+\chapter*{Abstract}
+\thispagestyle{empty}
 %\addcontentsline{toc}{chapter}{Summary} % si queremos que aparezca en el índice
 \markboth{SUMMARY}{SUMMARY} % encabezado
 The research community is faced with an increasing number of publications and trends that need to be taken into account when making their own publications. These topics and trends are state of the art at the time of publication or presentation at conferences, however, they may lose relevance over time. This measure of publication relevance represents a challenge for the research community, which spends a lot of time reading often outdated or irrelevant literature. To address this problem, a framework is introduced to assess the relevance of scientific articles primarily through a lexicon and neural network. Several experiments applied to the field of medicine have been carried out that demonstrate the good performance of the framework.
+
+Keywords: Relevance metric, Dictionary generation, Article reputation, Scientific relevance, Knowledge based system
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,11 +156,12 @@ The research community is faced with an increasing number of publications and tr
 % Las buenas noticias es que los índices se generan automáticamente.
 % Lo único que tienes que hacer es elegir cuáles quieren que se generen,
 % y comentar/descomentar esa instrucción de LaTeX.
-
+\thispagestyle{empty}
 %%%% Índice de contenidos
 \tableofcontents 
 %%%% Índice de figuras
 \cleardoublepage
+\thispagestyle{empty}
 %\addcontentsline{toc}{chapter}{Lista de figuras} % para que aparezca en el indice de contenidos
 \listoffigures % indice de figuras
 %%%% Índice de tablas
@@ -167,6 +176,9 @@ The research community is faced with an increasing number of publications and tr
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
+\thispagestyle{empty}
+\setcounter{page}{1}
+\pagestyle{plain}
 \chapter{Introducción}
 \label{sec:intro} % etiqueta para poder referenciar luego en el texto con ~
 En este capítulo introductorio se presenta, en primer lugar, el contexto científico sobre el que se enmarca el presente proyecto. Después, se introduce el objetivo principal y finalmente los objetivos específicos.
@@ -174,7 +186,7 @@ En este capítulo introductorio se presenta, en primer lugar, el contexto científ
 \section{Contexto}
 \label{sec:contexto}
 
-La comunidad investigadora invierte la mayor parte de su tiempo  documentándose, investigando literatura previa y el estado del arte. A menudo, la relevancia de los diferentes tópicos sobre los que se investiga fluctúa en gran medida con el tiempo, lo que provoca que, en ocaciones, los investigadores pierdan mucho tiempo con literatura desfasada o poco relevante. Por tanto, este proyecto introduce un marco de trabajo completo que tiene como finalidad organizar y medir la relevancia de artículos de investigación.
+La comunidad investigadora invierte la mayor parte de su tiempo  documentándose, investigando literatura previa y el estado del arte. A menudo, la relevancia de los diferentes tópicos sobre los que se investiga fluctúa en gran medida con el tiempo, lo que provoca que, en ocasiones, los investigadores pierdan mucho tiempo con literatura desfasada o poco relevante. Por tanto, este proyecto introduce un marco de trabajo completo que tiene como finalidad organizar y medir la relevancia de artículos de investigación.
 
 Dado que se trabaja con información textual, se utilizan técnicas de Procesamiento de Lenguaje Natural (NLP, por sus siglas en inglés) \cite{jurafsky2014speech} que sirven para poder tratar con este tipo de información desde un punto de vista computacional. A través de estas técnicas, las cuáles se combinan con métricas de reputación \cite{josang2007survey}, se construye un lexicón de relevancias para evaluar la relevancia de los documentos de un modo similar a un análisis de sentimientos \cite{de2018visual}. Para complementar este lexicón, se emplean técnicas de Deep Learning \cite{lecun2015deep} para evaluar la relevancia de los términos cuya relevancia sea desconocida por el lexicón y la reputación de cada artículo en caso de estar disponible.
 
@@ -205,7 +217,6 @@ El principal objetivo del presente trabajo es la creación del sistema completo d
 La memoria tiene los siguientes capítulos fundamentales:
 
 \begin{enumerate}
-\item Introducción.
 \item Estado del arte: En este capítulo se revisa la literatura en la que se apoya el siguiente trabajo, explicando ideas utilizadas y otras descartadas.
 \item Propuesta: Se trata del capítulo central y más importante, en el cuál se describe la propuesta del marco de trabajo completo.
 \item Experimentos y resultados: Se describe el caso uso del marco de trabajo, presentando los diferentes experimentos realizados.
@@ -218,25 +229,27 @@ La memoria tiene los siguientes capítulos fundamentales:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \cleardoublepage
-\chapter{Estado de la cuestión}
+\chapter{Estado del arte}
 \label{sec:alrepus}
 
 En este capítulo se hace un análisis de la literatura relacionada con las diferentes características del presente trabajo. Se describen ideas utilizadas, modificadas y/ó descartadas con sus correspondientes referencias.
 
 \section{Relevancia de documentos}
 \label{sec:genlex}
-Se define relevancia como importancia o cualidad de destacable. A lo largo de los años, se han propuesto diferentes aproximaciones matemáticas que determinan la relevancia de un texto, concepto o término. Debido a su simplicidad, eficacia y bajo coste computacional, el algoritmo \emph{TF-IDF}(Term frequency - Inverse Document Frequency) \cite{ramos2003using} ha sido el más utilizado por la comunidad científica. Parte de la asunción de que cuanto más sea repetido un término o concepto dentro de un documento, más relevante es (Term Frequency) dentro del mismo. No obstante, si ese término es muy común en un conjunto de textos, su relevancia baja (Inverse Documento Frequency).
- A pesar de sus virtudes, sólo tener en cuenta la parte frecuencial de los términos le resta potencial, de ahí que la comunidad científica haya propuesto numerosas modificaciones \cite{wang2019feature} con resultados desiguales para resolver sus limitaciones, como el STW (supervised term weighting) \cite{debole2004supervised}, TF-RF(Term Frequency) \cite{lan2008supervised} o el más reciente TF-IGM \cite{chen2016turning}. Todas estas aproximaciones son interesantes, pero dada su mayor complejidad y falta de continuidad de uso por la comunidad investigadora, se ha optado por la utilización del TF-IDF, quedando su comparación con el resto de aproximaciones para trabajos futuros.
+Se define relevancia como importancia o cualidad de destacable. A lo largo de los años, se han propuesto diferentes aproximaciones matemáticas que determinan la relevancia de un texto, concepto o término. Debido a su simplicidad, eficacia y bajo coste computacional, el algoritmo \emph{TF-IDF}(Term Frequency - Inverse Document Frequency) \cite{ramos2003using} ha sido el más utilizado por la comunidad científica. Parte de la asunción de que cuanto más sea repetido un término o concepto dentro de un documento, más relevante es (Term Frequency) dentro del mismo. No obstante, si ese término es muy común en un conjunto de textos, su relevancia baja (Inverse Documento Frequency).
+ A pesar de sus virtudes, sólo tener en cuenta la parte frecuencial de los términos le resta potencial, de ahí que la comunidad científica haya propuesto numerosas modificaciones \cite{wang2019feature} con resultados desiguales para resolver sus limitaciones, como el STW (supervised term weighting) \cite{debole2004supervised}, TF-RF(Term Frequency Relevance Frequency) \cite{lan2008supervised} o el más reciente TF-IGM \cite{chen2016turning}. Todas estas aproximaciones son interesantes, pero dada su mayor complejidad y falta de continuidad de uso por la comunidad investigadora, se ha optado por la utilización del TF-IDF, quedando su comparación con el resto de aproximaciones para trabajos futuros.
 
 \section{Generación automática de lexicones}
 \label{sec:genlex}
 
-La generación automática de lexicones de propósito específico es un desafío al que la comunidad científica lleva años enfrentándose. La mayoría de lexicones creados hasta la fecha están elaborados, en el mejor de los casos, con métodos semi supervisados \cite{bracewell2008semi}. La mayoría de las aproximaciones realizadas tienen como objetivo el análisis de sentimientos \cite{pang2008opinion}, siendo el mayor exponente SentiWordNet \cite{esuli2007sentiwordnet}, el cuál está creado con técnicas de aprendizaje supervisado. Hay alguna propuesta novedosa de ténicas automáticas, como la introducida por \cite{wu2019automatic}, que tiene en cuenta caractéristicas sintácticas y semánticas de las palabras para construir un diccionario de sentiemientos. Parte del presente trabajo requiere de un lexicón generado de manera automática, pero de relevancias, no de sentimientos, por tanto este tipo de aproximaciones u otras mas recientes como la de \cite{deng2019sentiment} no son aplicables.
+La generación automática de lexicones de propósito específico es un desafío al que la comunidad científica lleva años enfrentándose. La mayoría de lexicones creados hasta la fecha están elaborados, en el mejor de los casos, con métodos semi supervisados \cite{bracewell2008semi}. La mayoría de las aproximaciones realizadas tienen como objetivo el análisis de sentimientos \cite{pang2008opinion}, siendo el mayor exponente SentiWordNet \cite{esuli2007sentiwordnet}, el cuál está creado con técnicas de aprendizaje supervisado. Hay alguna propuesta novedosa de ténicas automáticas, como la introducida por \cite{wu2019automatic}, que tiene en cuenta caractéristicas sintácticas y semánticas de las palabras para construir un diccionario de sentiemientos. Parte del presente trabajo requiere de un lexicón generado de manera automática, pero de relevancias, no de sentimientos, por tanto este tipo de aproximaciones u otras mas recientes como la de \cite{deng2019sentiment} no son aplicables. Por otra parte, otras aproximaciones de gran relevancia actual, como la última versión de SenticNet \cite{cambria2018senticnet} , emplean redes neuronales recurrentes (RNN) para la construcción de su particular representación del conocimiento para la creación de un diccionario de sentimientos.
 
 \section{Algoritmos de reputación}
 \label{sec:repusalg}
 
 Los algoritmos de reputación tienen como objetivo cuantificar la confianza de una persona u objeto específico en base a información previa \cite{josang2007survey}. Revisando la literatura más reciente al respecto, \cite{fernandez2018unified} propone un marco de trabajo visual para dar soporte a la comunidad científica. Una de sus principales funcionalidades es la de proporner un algoritmo de reputación de artículos de investigación, en base a métricas como la veteranía de los autores y el número de citas. 
+
+Otras aproximaciones, como la propuesta en en artículo \cite{peleja2014reputation}, la cuál obtiene la reputación de críticas de películas, en base a principios similares a los empleados en la anterior publicación, como el número de citas de las críticas y el contexto en el que se encuentran, no obstante, los metadatos empleados para el cálculo sólo tienen sentindo dentro de este dominio de aplicación y no están disponibles para el presente caso. 
 
 \section{Redes neuronales aplicadas a texto}
 \label{sec:neuraltext}
@@ -423,7 +436,7 @@ La primera parte, se corresponde con el estudio e investigación del estado del a
 \section{Descarga y preprocesado de artículos}
 \label{sec:lexis} 
 
-Siguiendo la metodología expuesta en la sección \ref{sec:etl}, se procede a la descarga, limpieza y almacenaje de dos millones de artículos de Pubmed Central.
+Siguiendo la metodología expuesta en la Sección \ref{sec:etl}, se procede a la descarga, limpieza y almacenaje de dos millones de artículos de Pubmed Central.
 De los mas de dos millones de artículos descargados, todos son parseados y limpiados, pero sólo se calcula el resumen y la reputación de cuatro conjuntos de $15000$ artículos, que se corresponden con los años 2015, 2016, 2017 y 2018, para cada uno de los cuáles se construye un lexicón único. Se elige el número $15000$ porque en pruebas anteriores se ha comprobado que es el número máximo de filas de la matriz de términos por documentos que cabe en la memoria del equipo de pruebas (16GB de RAM). 
 Se fijan los parámetros de modulación para cada una de las ecuaciones del cálculo de reputaciones:
 En primer lugar, para la ecuación \ref{eq:1} se fija $\alpha$ a $0.5$ dando el mismo peso al número de citas que a la reputación de los coautores, ya que un alto volumen de citas es indicativo de un alto nivel de reputación, no obstante, si se le diera aún mas peso, se penalizarían demasiado los artículos mas recientes. En la ecuación \ref{eq:3} las omegas se fijan de la siguiente manera:
@@ -538,6 +551,8 @@ En todos los casos se trata de artículos de gran impacto y número de citas.
 \cleardoublepage
 \chapter{Conclusiones}
 \label{chap:conclusiones}
+
+En cuanto a la consecución de los objetivos específicos, se puede decir que se han conseguido con éxito. 
 
 
 trabajos futuros:

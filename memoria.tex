@@ -552,16 +552,10 @@ En todos los casos se trata de artículos de gran impacto y número de citas.
 \chapter{Conclusiones}
 \label{chap:conclusiones}
 
-En cuanto a la consecución de los objetivos específicos, se puede decir que se han conseguido con éxito. 
+En cuanto a la consecución de los objetivos específicos, se puede decir que se han conseguido con éxito. Se ha conseguido un volumen de artículos más que suficiente para los experimentos, el desarrollo y trabajos futuros. Se he han creado los lexicones y las redes neuronales, cuyo rendimiento ha sido evaluado por separado y en conjunto con resultados satisfactorios. El resultado final ofrece un marco de trabajo completo de fácil uso, bajo coste computacional (una vez entrenado) y de fácil reproducción si se desea aplicar a otro dominio.  
 
-
-trabajos futuros:
--mas pruebas variando los parámetros de modulación.
--creación de sistema de embegddings con vocabulario y corpus médico (gran porcentaje de pérdida de sustantivos).
--Obtención de correferencias para cada término-
--Utilizacion de una ontologia médica.
--ampliacion del tamaño de los lexicones.
-
+Quedan, no obstante, para trabajos futuros la detección de correferencias de términos, lo que daría una componente frecuencial de éstos más precisa. También quedaría pendiente el entrenamiento y aplicación de embeddings creados con el propio corpus de entrenamiento, ya que como se ha visto en capítulo anterior, el conjunto de entrenamiento tiene un gran número de palabras para las que no se cuenta con represetacíon vectorial. Otra posible línea de mejora, consiste en sustituir la utilización de uni-gramas por la de n-gramas con conceptos del dominio de aplicación, en el caso del dominio médico, se podría utilizar una ontología como UMLS \cite{verspoor2005towards}. Esto que plantearía, no obstante, otros desafíos, como la detección de conceptos y la desambiguación de los mismos dentro de los textos.
+Por último, aunque los lexicones han demostrado tener una alta cantidad de los términos más relevantes, su tamaño está limitado por el equipo de pruebas y podría aumentarse si distribuye el cálculo de los mismos o se aumenta la memoria del computador encargado de construirlos, con la consecuente disminución de dependencia de la red neuronal.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

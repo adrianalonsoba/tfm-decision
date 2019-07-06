@@ -88,7 +88,7 @@ Trabajo Fin de Máster
 \vspace{2.5cm}
 
 \LARGE
-Marco de trabajo para evaluar la relevancia de los artículos en el dominio científico
+Marco de trabajo para evaluar la relevancia de artículos de dominio científico
 
 \vspace{4cm}
 
@@ -114,31 +114,39 @@ Tutor : Dr. Alberto Fernández Isabel
 \textit{Dedicado a \\
 mi sobrino, Alberto, algún día te explicaré todo esto....}
 \end{flushright}
+\pagestyle{empty}
+\thispagestyle{empty}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Agradecimientos
+\pagestyle{empty}
+\thispagestyle{empty}
 
 \chapter*{Agradecimientos}
 \thispagestyle{empty}
 %\addcontentsline{toc}{chapter}{Agradecimientos} % si queremos que aparezca en el índice
 \markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado 
+\thispagestyle{empty}
 
 Gracias a mi familia y amigos por estar ahí cuando había que estar. Gracias a todos los compañeros del DSLAB por vuestra ayuda e inspiración, mención especial para Isaac. Gracias a Medlab Media Group y a mi tutor, Alberto, por vuestra confianza y apoyo.
+\thispagestyle{empty}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen
+\thispagestyle{empty}
 
 \chapter*{Resumen}
 \thispagestyle{empty}
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 
-Palabras clave:
 La comunidad investigadora se enfrenta cada vez a un mayor número de publicaciones y tendencias que deben atender a la hora hacer sus propias publicaciones. Estos tópicos y tendencias  son estado del arte en el momento de su publicación o presentación en conferencias, no obstante, pueden perder relevancia con el paso del tiempo. Esta medida de relevancia de publicaciones representa un desafío para la comunidad investigadora, la cuál invierte mucho tiempo leyendo literatura a menudo desfasada o poco relevante. Para abordar este problema, se introduce un marco de trabajo para evaluar la relevancia de artículos científicos a través de, principalmente, un lexicón y una red neuronal. Se han llevado a cabo diversos experimentos aplicados al dominio de la medicina que demuestran el buen funcionamiento del marco de trabajo.
 
 Palabras clave: Medida de relevancia, Generación de diccionario, Reputación de artículos, Relevancia científica, Sistema basado en conocimiento.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen en inglés
+\thispagestyle{empty}
 
 \chapter*{Abstract}
 \thispagestyle{empty}
@@ -147,33 +155,60 @@ Palabras clave: Medida de relevancia, Generación de diccionario, Reputación de a
 The research community is faced with an increasing number of publications and trends that need to be taken into account when making their own publications. These topics and trends are state of the art at the time of publication or presentation at conferences, however, they may lose relevance over time. This measure of publication relevance represents a challenge for the research community, which spends a lot of time reading often outdated or irrelevant literature. To address this problem, a framework is introduced to assess the relevance of scientific articles primarily through a lexicon and neural network. Several experiments applied to the field of medicine have been carried out that demonstrate the good performance of the framework.
 
 Keywords: Relevance metric, Dictionary generation, Article reputation, Scientific relevance, Knowledge based system
+\thispagestyle{empty}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+\thispagestyle{empty}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ÍNDICES %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
+\thispagestyle{empty}
+\thispagestyle{empty}
 
 % Las buenas noticias es que los índices se generan automáticamente.
 % Lo único que tienes que hacer es elegir cuáles quieren que se generen,
 % y comentar/descomentar esa instrucción de LaTeX.
 \thispagestyle{empty}
+\pagestyle{empty}
+\thispagestyle{empty}
+
 %%%% Índice de contenidos
+\pagestyle{empty}
+\thispagestyle{empty}
+\pagestyle{empty}
 \tableofcontents 
 %%%% Índice de figuras
+\pagestyle{empty}
+\thispagestyle{empty}
+\pagestyle{empty}
 \cleardoublepage
+\pagestyle{empty}
+\thispagestyle{empty}
+\pagestyle{empty}
 \thispagestyle{empty}
 %\addcontentsline{toc}{chapter}{Lista de figuras} % para que aparezca en el indice de contenidos
 \listoffigures % indice de figuras
+\thispagestyle{empty}
+\thispagestyle{empty}
+
 %%%% Índice de tablas
 %\cleardoublepage
 %\addcontentsline{toc}{chapter}{Lista de tablas} % para que aparezca en el indice de contenidos
 %\listoftables % indice de tablas
+\pagestyle{empty}
+\thispagestyle{empty}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % INTRODUCCIÓN %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\thispagestyle{empty}
 
 \cleardoublepage
 \thispagestyle{empty}
@@ -381,7 +416,7 @@ un umbral de relevancia $\epsilon$ para elegir el mínimo necesario de acuerdo a 
 \section{Estimación de relevancias de artículos} 
 \label{sec:full_process}
 
-Se ha diseñado un flujo de trabajo para ilustrar como funciona todo el proceso del marco de trabajo. Se comienza eligiendo un texto para evaluar y se concluye devolviendo su relevancia normalizada entre $0$ y $1$ (ver Figura. \ref{fig:pipeline}).
+Se ha diseñado un flujo de trabajo para ilustrar como funciona todo el proceso del marco de trabajo. Se comienza eligiendo un texto para evaluar y se concluye devolviendo su relevancia normalizada entre $0$ y $1$ (ver Figura. \ref{fig:arquitectura}).
 
 \begin{figure}
   \centering
@@ -400,7 +435,7 @@ Una vez se tienen mapeados los párrafos en listas de lemas de sustantivos, se co
 
 donde $rel\_lex_p$ es la relevancia media del artículo proporcionada por el lexicón, $\{s_k\}_{k=1}^K$ es el conjunto de frases cuya relevancia es desconocida y $rel\_neural$ es la relevancia predicha por la red neuronal para cada $s_k$. El parámetro $\theta \in (0,1)$ modula la importancia relativa de la red neuronal.
 
-En última instancia, en caso de que la entrada al sistema sea un documento y no texto plano, se comprueban los metadados del mismo para tratar de encontrar el DOI. En caso de estar disponible, el módulo \emph{Relevance calculator}, calcula su reputaciñón y esta es utilizada para calcular la relevancia final del documento, la cuál viene dada por:
+En última instancia, en caso de que la entrada al sistema sea un documento y no texto plano, se comprueban los metadados del mismo para tratar de encontrar el DOI. En caso de estar disponible, el módulo \emph{Relevance calculator}, calcula su reputación y esta es utilizada para calcular la relevancia final del documento, la cuál viene dada por:
 
 \begin{equation}
 	combined\_rel\_doi_{p} = \gamma \cdot combined\_rel_{p} + (1-\gamma)\cdot rep_{p} \,,
@@ -442,7 +477,7 @@ Se fijan los parámetros de modulación para cada una de las ecuaciones del cálcul
 En primer lugar, para la ecuación \ref{eq:1} se fija $\alpha$ a $0.5$ dando el mismo peso al número de citas que a la reputación de los coautores, ya que un alto volumen de citas es indicativo de un alto nivel de reputación, no obstante, si se le diera aún mas peso, se penalizarían demasiado los artículos mas recientes. En la ecuación \ref{eq:3} las omegas se fijan de la siguiente manera:
 $\omega_1$ = 0.2, $\omega_2$ = 0.1, $\omega_3$ = 0.3, $\omega_4$ = 0.4
 
-Se decide dar más peso a los valores de veteranía y número de artículos publicados por el autor, ya que los otros dos parámetros, son valores que, aunque tienen relevancia, cuentan con un mayor nivel de subjetividad.
+Se decide dar más peso a los valores de veteranía y número de artículos publicados por el autor, ya que los otros dos parámetros, son valores que, aunque tienen relevancia, cuentan con un mayor nivel de subjetividad y son calculados con algoritmos propios de Semantic Scholar.
 
 Una vez fijados los parámetros de modulación, se fijan los valores de saturación a partir del percentil 90 de cada parámetro tomando una muestra de 5000 artículos aleatorios, ver Tabla \ref{tab:saturacion}. 
 
@@ -471,7 +506,7 @@ Al fijar los valores de saturación y normalizar entre $0$ $1$ la reputación de t
 Siguiendo la metodología propuesta en la sección \ref{sec:lex}, se fijan los parámetros para las Ecuaciones \ref{eq:4} y \ref{eq:5}:
 
 Para la Ecuación \ref{eq:4}, se toma $\beta$ $=$ $0.5$ para dar la misma importancia a la reputación que a la componente léxica en la medida de relevancia.
-En la Ecuación \ref{eq:4} se toma $\rho$ $=$ $0.8$, lo cuál da un mayor peso a la relevancia actual del término, teniendo en cuenta algo de la relevancia del año anterior. Cabe destacar, que para aquellos términos que dejen de estar presentes de un año para otro, su relevancia actual es de $(1-\rho) 0.2$. Que un término desaparezca por completo de un año para otro es indicativo de ser poco relevante y aunque se mantiene en el lexicón del año actual, su relevancia es penalizada. Por otra parte, a aquellos términos nuevos para cada lexicón (no aparecen en años anteriores) se les da toda larelevancia correspondiente, al ser considerados términos de relevancia emergente.
+En la Ecuación \ref{eq:4} se toma $\rho$ $=$ $0.8$, lo cuál da un mayor peso a la relevancia actual del término, teniendo en cuenta algo de la relevancia del año anterior. Cabe destacar, que para aquellos términos que dejen de estar presentes de un año para otro, su relevancia actual es de $(1-\rho) 0.2$. Que un término desaparezca por completo de un año para otro es indicativo de ser poco relevante y aunque se mantiene en el lexicón del año actual, su relevancia es penalizada. Por otra parte, a aquellos términos nuevos para cada lexicón (no aparecen en años anteriores) se les da toda la relevancia correspondiente, al ser considerados términos de relevancia emergente.
 Por motivos obvios, el lexicón correspondiente al año 2015 no cuenta con factor de memoria de los años anteriores, ya que este actúa como semilla.
 
 Por otra parte, se ha tenido en consideración el uso de un diccionario médico abierto para darle más peso a los términos estrictamente médicos y así penalizar la relevancia de términos de carácter académico, típicos en el lenguaje de todos los artículos de investigación. En concreto, los mejores resultados se han obtenido dándole un 80 por ciento del peso a aquellos términos del diccionario médico y el resto a los que no están. Esto provoca una separación en la poblaciones claramente visible en los histogramas de las relevancias de los lexicones (ver Figura \ref{fig:hists}). Conforme se aumenta de año, puede verse un ensanchamiento de la población de los términos que se encuentran en el diccionario, fruto de la adición de los términos de años anteriores.
@@ -514,7 +549,7 @@ Por otra parte, el modelo de Glove, el cuál cuenta con $400000$ palabras codific
 \section{Experimentos}
 \label{sec:lexis}
 
-Se han analizado un total de $8000$ artículos con el sistema completo, $2000$ para cada año, prediciendo los artículos de cada año con el lexicón y la red del año anterior, a excepción de los artículos del año 2015, para los cuáles se ha utilizado la red y el lexicón del mismo año. Se pretende evaluar si el sistema rinde bien de un año para otro o si funciona mejor para predecir la relevancia de artículos del mismo año.
+Se han analizado un total de $8000$ artículos con el sistema completo, $2000$ para cada año, prediciendo los artículos de cada año con el lexicón y la red del año anterior, a excepción de los artículos del año 2015, para los cuáles se ha utilizado la red y el lexicón del mismo año.
 Se ha calculado la relevancia con los siguientes parámetros:
 En la Ecuación \ref{eq:7}, se toma $\theta$ = $0.8$ dando la mayor parte del peso a la parte del lexicón, ya que la red funciona como apoyo al sistema.
 Por otra parte, en la Ecuación \ref{eq:8} se toma $\gamma$ = $0.6$ dando la mayor parte del peso al resultado de la Ecuación \ref{eq:7}.
@@ -532,7 +567,7 @@ Puede observarse la poca influencia que tienen los valores de reputación de la r
 Aunque se han analizado documentos para los siguientes años, de las gráficas se extraen las mismas conclusiones, ya que tienen distribuciones muy parecidas.
 
 Por otra parte, en la Figura \ref{fig:rel_tab} puede verse una tabla con los $15$ resultados de mayor relevancia del caso anterior. En en todos los casos, los valores de reputación son elevados, lo que está también acorde con lo elevados que son los valores de la puntuación del lexicón exclusivamente. En todos los casos el valor de relevancia proporcionado por la red neuronal es muy baja o oncluso $0$, reforzando el carácter de apoyo de las red neuronal.
-En todos los casos se trata de artículos de gran impacto y número de citas.
+En todos los casos se trata de artículos de gran impacto y número de citas, tendencia que se mantiene en la gran mayoría de artículos de alta reputación. En aquellos casos en los se tiene un elevado valor en la relevancia pero bajo número de citas o reputación en general, se debe a un muy elevado valor de la componente exclusivamente léxica, no obstante, es un comportamiento raramente dado.
 
 \begin{figure}
   \centering
@@ -552,9 +587,9 @@ En todos los casos se trata de artículos de gran impacto y número de citas.
 \chapter{Conclusiones}
 \label{chap:conclusiones}
 
-En cuanto a la consecución de los objetivos específicos, se puede decir que se han conseguido con éxito. Se ha conseguido un volumen de artículos más que suficiente para los experimentos, el desarrollo y trabajos futuros. Se he han creado los lexicones y las redes neuronales, cuyo rendimiento ha sido evaluado por separado y en conjunto con resultados satisfactorios. El resultado final ofrece un marco de trabajo completo de fácil uso, bajo coste computacional (una vez entrenado) y de fácil reproducción si se desea aplicar a otro dominio.  
+En cuanto a la consecución de los objetivos específicos, se puede decir que se han conseguido con éxito. Se ha obtenido un volumen de artículos más que suficiente para los experimentos, el desarrollo y trabajos futuros. Se han creado los lexicones y las redes neuronales, cuyo rendimiento ha sido evaluado por separado y en conjunto con resultados satisfactorios. El resultado final ofrece un marco de trabajo completo de fácil uso, bajo coste computacional (una vez entrenado) y de fácil reproducción si se desea aplicar a otro dominio.  
 
-Quedan, no obstante, para trabajos futuros la detección de correferencias de términos, lo que daría una componente frecuencial de éstos más precisa. También quedaría pendiente el entrenamiento y aplicación de embeddings creados con el propio corpus de entrenamiento, ya que como se ha visto en capítulo anterior, el conjunto de entrenamiento tiene un gran número de palabras para las que no se cuenta con represetacíon vectorial. Otra posible línea de mejora, consiste en sustituir la utilización de uni-gramas por la de n-gramas con conceptos del dominio de aplicación, en el caso del dominio médico, se podría utilizar una ontología como UMLS \cite{verspoor2005towards}. Esto que plantearía, no obstante, otros desafíos, como la detección de conceptos y la desambiguación de los mismos dentro de los textos.
+Quedan, no obstante, para trabajos futuros la detección de correferencias de términos, lo que daría una componente frecuencial de éstos más precisa. También quedaría pendiente el entrenamiento y aplicación de embeddings creados con el propio corpus de entrenamiento, ya que como se ha visto en capítulo anterior, el conjunto de entrenamiento tiene un gran número de palabras para las que no se cuenta con represetacíon vectorial. Otra posible línea de mejora, consiste en sustituir la utilización de uni-gramas por la de n-gramas con conceptos del dominio de aplicación, en el caso del dominio médico, se podría utilizar una ontología como UMLS \cite{verspoor2005towards}. Esto plantearía, no obstante, otros desafíos, como la detección de conceptos y la desambiguación de los mismos dentro de los textos.
 Por último, aunque los lexicones han demostrado tener una alta cantidad de los términos más relevantes, su tamaño está limitado por el equipo de pruebas y podría aumentarse si distribuye el cálculo de los mismos o se aumenta la memoria del computador encargado de construirlos, con la consecuente disminución de dependencia de la red neuronal.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

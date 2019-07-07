@@ -83,6 +83,28 @@ Dong Deng, Liping Jing, Jian Yu, Shaolong Sun, and Michael~K Ng.
 \newblock {\em IEEE/ACM Transactions on Audio, Speech, and Language
   Processing}, 27(4):704--718, 2019.
 
+\bibitem{cambria2018senticnet}
+Erik Cambria, Soujanya Poria, Devamanyu Hazarika, and Kenneth Kwok.
+\newblock Senticnet 5: Discovering conceptual primitives for sentiment analysis
+  by means of context embeddings.
+\newblock In {\em Thirty-Second AAAI Conference on Artificial Intelligence},
+  2018.
+
+\bibitem{fernandez2018unified}
+Alberto Fern{\'a}ndez-Isabel, Juan~Carlos Prieto, Felipe Ortega,
+  Isaac~Mart{\'\i}n de~Diego, Javier~M Moguerza, Jos{\'e} Mena, Sara Galindo,
+  and Liana Napalkova.
+\newblock A unified knowledge compiler to provide support the scientific
+  community.
+\newblock {\em Knowledge-Based Systems}, 161:157--171, 2018.
+
+\bibitem{peleja2014reputation}
+Filipa Peleja, Jo{\~a}o Santos, and Jo{\~a}o Magalh{\~a}es.
+\newblock Reputation analysis with a ranked sentiment-lexicon.
+\newblock In {\em Proceedings of the 37th international ACM SIGIR conference on
+  Research \& development in information retrieval}, pages 1207--1210. ACM,
+  2014.
+
 \bibitem{tang2014learning}
 Duyu Tang, Furu Wei, Nan Yang, Ming Zhou, Ting Liu, and Bing Qin.
 \newblock Learning sentiment-specific word embedding for twitter sentiment
@@ -121,6 +143,23 @@ Panos Vassiliadis.
 \newblock {\em International Journal of Data Warehousing and Mining (IJDWM)},
   5(3):1--27, 2009.
 
+\bibitem{han2011survey}
+Jing Han, E~Haihong, Guan Le, and Jian Du.
+\newblock Survey on nosql database.
+\newblock In {\em 2011 6th international conference on pervasive computing and
+  applications}, pages 363--366. IEEE, 2011.
+
+\bibitem{gormley2015elasticsearch}
+Clinton Gormley and Zachary Tong.
+\newblock {\em Elasticsearch: The definitive guide: A distributed real-time
+  search and analytics engine}.
+\newblock " O'Reilly Media, Inc.", 2015.
+
+\bibitem{gupta2015kibana}
+Yuvraj Gupta.
+\newblock {\em Kibana Essentials}.
+\newblock Packt Publishing Ltd, 2015.
+
 \bibitem{mitchell2018web}
 Ryan Mitchell.
 \newblock {\em Web Scraping with Python: Collecting More Data from the Modern
@@ -150,19 +189,23 @@ Federico Barrios, Federico L{\'{o}}pez, Luis Argerich, and Rosa Wachenchauzer.
   summarization.
 \newblock {\em CoRR}, abs/1602.03606, 2016.
 
-\bibitem{fernandez2018unified}
-Alberto Fern{\'a}ndez-Isabel, Juan~Carlos Prieto, Felipe Ortega,
-  Isaac~Mart{\'\i}n de~Diego, Javier~M Moguerza, Jos{\'e} Mena, Sara Galindo,
-  and Liana Napalkova.
-\newblock A unified knowledge compiler to provide support the scientific
-  community.
-\newblock {\em Knowledge-Based Systems}, 161:157--171, 2018.
+\bibitem{valenzuela2015identifying}
+Marco Valenzuela, Vu~Ha, and Oren Etzioni.
+\newblock Identifying meaningful citations.
+\newblock In {\em Workshops at the twenty-ninth AAAI conference on artificial
+  intelligence}, 2015.
 
 \bibitem{semanticscholar2018sc}
 {Allen Institute for Artificial Intelligence and Semantic Scholar}.
 \newblock {Semantic Scholar API}.
 \newblock \url{https://api.semanticscholar.org/}, 2018.
 \newblock [Online: accedido 20-Dic-2018].
+
+\bibitem{paskin2010digital}
+Norman Paskin.
+\newblock Digital object identifier (doi{\textregistered}) system.
+\newblock {\em Encyclopedia of library and information sciences}, 3:1586--1592,
+  2010.
 
 \bibitem{chandramouli2018domain}
 Aravind Chandramouli.
@@ -175,6 +218,12 @@ Sonal Gupta.
 \newblock {\em Distantly Supervised Information Extraction Using Bootstrapped
   Patterns}.
 \newblock PhD thesis, Stanford University, 2015.
+
+\bibitem{seinecleStopwords2016}
+{Clement Levallois}.
+\newblock {Lists of academic stopwords}.
+\newblock \url{https://github.com/seinecle/Stopwords}, 2016.
+\newblock [Online: accessed 20-Jan-2019].
 
 \bibitem{anandarajan2019term}
 Murugan Anandarajan, Chelsey Hill, and Thomas Nolan.
@@ -215,5 +264,10 @@ Yoav Goldberg and Omer Levy.
 \newblock word2vec explained: deriving mikolov et al.'s negative-sampling
   word-embedding method.
 \newblock {\em arXiv preprint arXiv:1402.3722}, 2014.
+
+\bibitem{verspoor2005towards}
+Karin Verspoor.
+\newblock Towards a semantic lexicon for biological language processing.
+\newblock {\em International Journal of Genomics}, 6(1-2):61--66, 2005.
 
 \end{thebibliography}

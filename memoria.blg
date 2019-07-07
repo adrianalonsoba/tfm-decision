@@ -3,52 +3,46 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: memoria.aux
 The style file: unsrt.bst
 Database file #1: memoria.bib
-Warning--I didn't find a database entry for "han2011survey"
-Warning--I didn't find a database entry for "gormley2015elasticsearch"
-Warning--I didn't find a database entry for "gupta2015kibana"
-Warning--I didn't find a database entry for "valenzuela2015identifying"
-Warning--I didn't find a database entry for "paskin2010digital"
-Warning--I didn't find a database entry for "seinecleStopwords2016"
 Warning--empty institution in crockford2006application
-You've used 36 entries,
+You've used 45 entries,
             1791 wiz_defined-function locations,
-            659 strings with 10001 characters,
-and the built_in function-call counts, 8446 in all, are:
-= -- 774
-> -- 342
-< -- 10
-+ -- 130
-- -- 94
-* -- 514
-:= -- 1293
-add.period$ -- 111
-call.type$ -- 36
-change.case$ -- 31
+            699 strings with 11392 characters,
+and the built_in function-call counts, 10551 in all, are:
+= -- 969
+> -- 416
+< -- 12
++ -- 159
+- -- 114
+* -- 620
+:= -- 1599
+add.period$ -- 141
+call.type$ -- 45
+change.case$ -- 38
 chr.to.int$ -- 0
-cite$ -- 37
-duplicate$ -- 402
-empty$ -- 848
-format.name$ -- 94
-if$ -- 1921
+cite$ -- 46
+duplicate$ -- 513
+empty$ -- 1080
+format.name$ -- 114
+if$ -- 2421
 int.to.chr$ -- 0
-int.to.str$ -- 36
-missing$ -- 36
-newline$ -- 183
-num.names$ -- 36
-pop$ -- 128
+int.to.str$ -- 45
+missing$ -- 46
+newline$ -- 229
+num.names$ -- 45
+pop$ -- 176
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 202
+skip$ -- 252
 stack$ -- 0
-substring$ -- 550
-swap$ -- 111
-text.length$ -- 10
+substring$ -- 672
+swap$ -- 144
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 85
-width$ -- 38
-write$ -- 392
-(There were 7 warnings)
+while$ -- 104
+width$ -- 47
+write$ -- 490
+(There was 1 warning)

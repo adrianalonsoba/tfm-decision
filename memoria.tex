@@ -304,36 +304,36 @@ En este capítulo, se describe la propuesta del sistema completo, definiendo entr
 
 \section{Arquitectura general} 
 \label{sec:arquitectura}
-En la Figura \ref{fig:arquitectura}, se pueden observar el módulo principal: \textit{Relevance estimator module}, que es el encargado de estimar las relevancias de los artículos de entrada, y sus correspondientes submódulos: \textit{Text processor, Reputation calculator y Relevance calculator}. Se cuenta además, con dos fuentes de información precalculadas utilizadas por el submódulo \textit{Relevance calculator}, a saber, \textit{Relevance lexicon} que consiste en cuatro lexicones\cite{pustejovsky1991generative} de relevancias de términos médicos y \textit{Neural network}, que consiste en cuatro modelos entrenados de redes neuronales convolucionales (CNN)\cite{poria2015deep} por sus siglas en inglés. Por otra parte, se cuenta con un módulo de visualización(\textit{Visualization}), que se utiliza para ver la salida del sistema y para proporcionar la entrada (\textit{Text}). Por último, se utiliza una fuente de información externa en tiempo real (\textit{Web information resources}).
+En la Figura \ref{fig:arquitectura}, se pueden observar el módulo principal: \textit{Estimador de relevancia}, que es el encargado de estimar las relevancias de los artículos de entrada, y sus correspondientes submódulos: \textit{Procesador de texto, Calculador de reputación y Calculador de relevancia}. Se cuenta además, con dos fuentes de información precalculadas utilizadas por el submódulo \textit{Calculador de relevancia}, a saber, \textit{Lexicón de relevancia} que consiste en cuatro lexicones\cite{pustejovsky1991generative} de relevancias de términos médicos y \textit{Red neuronal}, que consiste en cuatro modelos entrenados de redes neuronales convolucionales (CNN)\cite{poria2015deep} por sus siglas en inglés. Por otra parte, se cuenta con un módulo de visualización(\textit{Visualización}), que se utiliza para ver la salida del sistema y para proporcionar la entrada (\textit{Texto}). Por último, se utiliza una fuente de información externa en tiempo real.
 
-En primer lugar se entra en detalle en cómo se construye Relevance lexicon, después Neural network y, por último, Relevance estimator module, el cuál emplea todo lo anterior para calcular las relevancias de nuevos documentos.
+En primer lugar se entra en detalle en cómo se construye Lexicón de relevancia, después Red neuronal y, por último, el módulo de estimación de relevancia completo, el cuál emplea todo lo anterior para calcular las relevancias de nuevos documentos.
 
 \begin{figure}
   \centering
-  \includegraphics[width=16cm, keepaspectratio]{img/architecture}
+  \includegraphics[width=16cm, keepaspectratio]{img/arc_esp.png}
   \caption{Arquitectura general}
   \label{fig:arquitectura}
 \end{figure}
 
 \section{Creación del lexicón de relevancias} 
 \label{sec:lex}
-El lexicón de relevancias tiene un papel fundamental a la hora de estimar la relevancia de los artículos, en concreto, contiene la relevancia de las palabras del dominio de aplicación utilizado para crear el mismo. Para la creación del lexicón se ha diseñado un marco de trabajo completo a parte, cuya arquitectura puede verse en la Figura \ref{fig:train_lexicon}. Esta cuenta con un módulo de extracción, transformación y carga (ETL por sus siglas en inglés)\cite{vassiliadis2009survey}, un módulo de gestión de conomicimiento (Knowledge managment) y uno de visualización. Se cuenta, además, con dos bases de datos, una orientada a documentos\cite{han2011survey}(Document knowledge consolidation) y una ElasticSearch\cite{gormley2015elasticsearch} para visualización con Kibana \cite{gupta2015kibana}.
+El lexicón de relevancias tiene un papel fundamental a la hora de estimar la relevancia de los artículos, en concreto, contiene la relevancia de las palabras del dominio de aplicación utilizado para crear el mismo. Para la creación del lexicón se ha diseñado un marco de trabajo completo a parte, cuya arquitectura puede verse en la Figura \ref{fig:train_lexicon}. Esta cuenta con un módulo de extracción, transformación y carga (ETL por sus siglas en inglés)\cite{vassiliadis2009survey}, un módulo de gestión de conomicimiento y uno de visualización. Se cuenta, además, con dos bases de datos, una orientada a documentos\cite{han2011survey}(Consolidación de información de documentos) y una ElasticSearch\cite{gormley2015elasticsearch} para visualización con Kibana \cite{gupta2015kibana}.
 
 \begin{figure}
   \centering
-  \includegraphics[width=16cm, keepaspectratio]{img/train_lexicon}
+  \includegraphics[width=15cm, keepaspectratio]{img/lex_esp}
   \caption{Arquitectura de generación de lexicones}
-  \label{fig:arquitectura}
+  \label{fig:train_lexicon}
 \end{figure}
 
 \subsection{Módulo ETL} 
 \label{sec:etl}
 
-El módulo ETL se encarga de la obtención y el preprocesado del corpus de artículos médicos. Se divide a su vez en dos submódulos: Corpus processor y Reputation calculator.
-Corpus processor obtiene artículos de Pubmed Central\footnote{\url{https://www.ncbi.nlm.nih.gov/pmc/}} utilizando técnicas de web scrapping \cite{mitchell2018web}. Estos artículos en formato XML \cite{bray2000extensible}, son parseados y almacenados en formato JSON \cite{crockford2006application} en Document knowledge consolidation con una estructura de párrafos y frases, eliminando tablas, gráficas u otros artefactos no aprovechables por el sistema.
+El módulo ETL se encarga de la obtención y el preprocesado del corpus de artículos médicos. Se divide a su vez en dos submódulos: Procesador del corpus y calculador de reputación.
+Corpus processor obtiene artículos de Pubmed Central\footnote{\url{https://www.ncbi.nlm.nih.gov/pmc/}} utilizando técnicas de web scrapping \cite{mitchell2018web}. Estos artículos en formato XML \cite{bray2000extensible}, son parseados y almacenados en formato JSON \cite{crockford2006application} en Consolidación de información de documentos con una estructura de párrafos y frases, eliminando tablas, gráficas u otros artefactos no aprovechables por el sistema.
 Una vez un documento se almacena en la base de datos, se procede a calcular su resumen automático aplicando el clásico algoritmo Text Rank \cite{mihalcea2004textrank} utilizando una popular implementación en Python \cite{DBLP:journals/corr/BarriosLAW16}. Este tipo de resúmenes ofrecen una ordenación de las frases de un documento por relevancia, sirviendo como factor de filtrado de información poco relevante o redundante y a la vez como factor de compresión, haciendo la información más manejable en memoria. Se obtiene un 20 porciento del tamaño original de los artículos y se almacena como un nuevo artibuto del documento en la base de datos.
 
-Una vez preprocesados y almacenados los artículos, \emph{Reputation calculator} calcula la reputación de los mismos para que esta sea añadida como nuevo atributo y ser utilizada posteriormente por el módulo Knowledge managment.
+Una vez preprocesados y almacenados los artículos, \emph{Calculador de reputación} calcula la reputación de los mismos para que esta sea añadida como nuevo atributo y ser utilizada posteriormente por el Módulo de gestión del conocimiento.
 El algoritmo de reputación empleado es una adaptación del introducido en el artículo \cite{fernandez2018unified}. La reputación a priori de un artículo viene dada por:
 \begin{equation}
 \label{eq:1}
@@ -346,19 +346,19 @@ donde  $rep\_authors_{p}$ es la reputación media del los autores del artículo y 
 	rep_{i} = \omega_1 \cdot inf\_citation\_count + \omega_2 \cdot citation\_velocity + \omega_3 \cdot seniority + \omega_4 \cdot papers \,,
 \end{equation}
 
-donde $\sum_{i=1}^4\omega_i=1$. El parámetro $inf\_citation\_count$ representa el número de citas altamente influyentes del autor. \cite{valenzuela2015identifying}. $citation\_velocity$ indica lo popular que es el autor durante los últimos 3 años. $seniority$ es la cantidad de años transcurridos entre la primera y última publicación del autor. Por último, $papers$ es el número total de artículos publicados por el autor. 
-Estos parámetros son extraídos de la API REST de Semantic Scholar\cite{semanticscholar2018sc} a través del Identificador Digital de Objeto (DOI, por sus siglas en inglés)\cite{paskin2010digital} del documento. Una vez que el módulo Reputation Calculator ha calculado la reputación del artículo, esta se añade a \emph{Document knowledge consolidation}, como un atributo nuevo.
+donde $\sum_{i=1}^4\omega_i=1$. El parámetro $inf\_citation\_count$ representa el número de citas altamente influyentes del autor \cite{valenzuela2015identifying}. $citation\_velocity$ indica lo popular que es el autor durante los últimos 3 años. $seniority$ es la cantidad de años transcurridos entre la primera y última publicación del autor. Por último, $papers$ es el número total de artículos publicados por el autor. 
+Estos parámetros son extraídos de la API REST de Semantic Scholar\cite{semanticscholar2018sc} a través del Identificador Digital de Objeto (DOI, por sus siglas en inglés)\cite{paskin2010digital} del documento. Una vez que el módulo Reputation Calculator ha calculado la reputación del artículo, esta se añade a \emph{Consolidación de información de documentos}, como un atributo nuevo.
 
 \subsection{Módulo de Gestión del conocimiento} 
 \label{sec:know}
-Este módulo consulta \emph{Document knowledge consolidation} y sirviéndose de 3 submódulos, construye finalmente el lexicón. Estos 3 submódulos son Text filter, Text normalizer y Lexicon builder.
+Este módulo consulta \emph{Consolidación de información de documentos} y sirviéndose de 3 submódulos, construye finalmente el lexicón. Estos 3 submódulos son Filtro de texto, Normalizador de texto y Constructor del lexicón.
 
-\subsection{Text filter} 
+\subsection{Filtro de texto} 
 \label{sec:filter}
 
 Este módulo analiza los resúmenes extraidos por el módulo ETL por cada documento, aplicando técnicas de procesamiento de lenguaje natural (NLP) \cite{jurafsky2014speech} extrayendo los sustantivos y eliminando palabras vacías \cite{chandramouli2018domain}, tanto genéricas como de dominio médico\cite{gupta2015distantly} y académico\cite{seinecleStopwords2016}. Finalmente, se obtienen los lemas de los sustantivos, lo que permite cierta desambiguación, ya que el lema de una palabra depende de la función sintáctica de la misma. Además, se resuelven posibles conflictos entre mayúsculas, minúsculas, singulares y plurales.
 
-\subsection{Text normalizer} 
+\subsection{Normalizador de texto} 
 \label{sec:filter}
 Este submódulo construye una matriz de términos por documentos \cite{anandarajan2019term} a partir de la cuál construye la matriz TF-IDF \cite{ramos2003using}. Los pesos resultantes se combinan con las reputaciones de los artículos dando la medida de relevancia de cada término $rel\_lex_{t}$. La relevancia de cada término $t$ en los  $N$ artículos pertenecientes al corpus $C$ viene dada por:
 
@@ -369,7 +369,7 @@ Este submódulo construye una matriz de términos por documentos \cite{anandarajan
 
 donde $rep_p$ es la reputación del artículo $p$, $tfidf(t)_p$ es el valor TF-IDF del término $t$ en el artículo $p$ y $\beta \in (0,1)$ es otro parámetro que modula la importancia relativa del valor TF-IDF sobre la reputación. Cabe destacar que $tfidf(t)_p \in (0,1)$ ya que han sido normalizados por simplicidad y se aplica el logaritmo para normalizar la distribución.
 
-\subsection{Lexicon builder} 
+\subsection{Constructor del lexicón} 
 \label{sec:filter}
 Este componente construye y organiza el lexicón a partir del texto normalizado. Contempla además la posibilidad de ponderar aún más el peso de aquellos términos de dominio específico proporcionados por un diccionario, médico en este caso \cite{webster2017merriam}. 
 
@@ -420,14 +420,14 @@ Se ha diseñado un flujo de trabajo para ilustrar como funciona todo el proceso d
 
 \begin{figure}
   \centering
-  \includegraphics[width=8cm, keepaspectratio]{img/pipeline_2}
+  \includegraphics[width=8cm, keepaspectratio]{img/pipeline_esp}
   \caption{Flujo de trabajo de cálculo de relevancia de un artículo}
   \label{fig:arquitectura}
 \end{figure}
 
-En primer el sistema detecta si el documento  cuya relevancia se desea conocer consiste en texto plano o un fichero (de tipo PDF, html o similar). En caso de ser un fichero, este es parseado, limpiado y partido en frases y párrafos. Estas tareas se llevan a cabo en los pasos \emph{Parse to raw text} y \emph{Clean and tokenize sentences}, respectivamente.
+En primer el sistema detecta si el documento  cuya relevancia se desea conocer consiste en texto plano o un fichero (de tipo PDF, html o similar). En caso de ser un fichero, este es parseado, limpiado y partido en frases y párrafos. Estas tareas se llevan a cabo en los pasos \emph{Parsear a texto crudo} y \emph{Limpiar y tokenizar frases}, respectivamente.
 
-Una vez se tienen mapeados los párrafos en listas de lemas de sustantivos, se consulta el lexicón por cada lista, acumulando el valor de relevancia de cada lema. En caso de que una frase no contenga ningún lema presente en el lexicón, la lista de lemas se tranforma en los vectores que entran a la red neuronal, que devuelve la predicción de relevancia. Estas tareas son llevadas a cabo por el módulo \emph{Relevance calculator}. Una vez recorridas todas las listas de lemas, la relevancia viene dada por la Ecuación:
+Una vez se tienen mapeados los párrafos en listas de lemas de sustantivos, se consulta el lexicón por cada lista, acumulando el valor de relevancia de cada lema. En caso de que una frase no contenga ningún lema presente en el lexicón, la lista de lemas se tranforma en los vectores que entran a la red neuronal, que devuelve la predicción de relevancia. Estas tareas son llevadas a cabo por el módulo \emph{Calculador de relevancia}. Una vez recorridas todas las listas de lemas, la relevancia viene dada por la Ecuación:
 \begin{equation}
 	combined\_rel_{p} = \theta \cdot rel\_lex_{p} + (1-\theta) \cdot \frac{1}{K} \sum \limits_{k=1}^K rel\_neural(s_k)\,,
     \label{eq:7}
@@ -435,14 +435,14 @@ Una vez se tienen mapeados los párrafos en listas de lemas de sustantivos, se co
 
 donde $rel\_lex_p$ es la relevancia media del artículo proporcionada por el lexicón, $\{s_k\}_{k=1}^K$ es el conjunto de frases cuya relevancia es desconocida y $rel\_neural$ es la relevancia predicha por la red neuronal para cada $s_k$. El parámetro $\theta \in (0,1)$ modula la importancia relativa de la red neuronal.
 
-En última instancia, en caso de que la entrada al sistema sea un documento y no texto plano, se comprueban los metadados del mismo para tratar de encontrar el DOI. En caso de estar disponible, el módulo \emph{Relevance calculator}, calcula su reputación y esta es utilizada para calcular la relevancia final del documento, la cuál viene dada por:
+En última instancia, en caso de que la entrada al sistema sea un documento y no texto plano, se comprueban los metadados del mismo para tratar de encontrar el DOI. En caso de estar disponible, el módulo \emph{Calculador de relevancia}, calcula su reputación y esta es utilizada para calcular la relevancia final del documento, la cuál viene dada por:
 
 \begin{equation}
 	combined\_rel\_doi_{p} = \gamma \cdot combined\_rel_{p} + (1-\gamma)\cdot rep_{p} \,,
     \label{eq:8}
 \end{equation}
 
-donde $combined\_rel_p$ es la relevancia combinada del lexicón y la red neuronal para el artcículo y $rep_p$ es su reputación. El parámetro $\gamma \in (0,1)$ modula, su importancia relativa.
+donde $combined\_rel_p$ es la relevancia combinada del lexicón y la red neuronal para el artículo y $rep_p$ es su reputación. El parámetro $\gamma \in (0,1)$ modula, su importancia relativa.
 
 En caso de que el DOI no esté disponible, se devuelve el resultado de la Ecuación \ref{eq:7} como medida de relevancia final.
 
@@ -527,7 +527,7 @@ Por otra parte, se ha tenido en consideración el uso de un diccionario médico ab
 Para crear el conjunto de entrenamiento, se cuenta con mas de $100000$ artículos de cada año no utilizados para la creación de los lexicones. Siguiendo el procedimiento descrito en la Sección \ref{sec:red}, se crea un conjunto con $320000$ frases etiquetadas para entrenamiento y $80000$ para test para los 4 lexicones. Se etiquetan como relevantes aquellas frases que contienen 4 o más sustantivos que tengan relevancia $0.7$ o mayor. Se utiliza este valor de corte porque es a partir del cuál se encuentra la mayoría de los términos mas relevantes de la población perteneciente al diccionario médico. Siguiendo este criterio, se realiza un análisis exploratorio con $1000$ artículos del año 2015 no utilizados para la creación del lexicón, obteniendo los siguientes resultados:
 $112808$ frases totales analizadas, de las cuáles $96682$ son etiquetadas como relevantes y   $16126$ como no relevantes. El alto porcentaje de frases relevantes indica que el lexicón tiene una riqueza aceptable, implicando una menor dependenencia de la red neuronal.
 
-Se ha probado con dos conjuntos pre-entrenados de \emph{Word2vect} \cite{goldberg2014word2vec} uno de Google y otro de Glove \cite{pennington2014glove}. En el caso del Modelo de Google, el cuál cuenta con un diccionario de $3000000$ palabras, se ha analizado el conjunto de completo de entrenamiento y test del año 2015, en el cuál hay un total de $5026862$ sustantivos, de los cuáles $4809398$ se encuentran en el diccionario de Word2Vect. Cuenta con $97104$ sustantivos únicos de los cuáles $34203$ se tienen codificados. Dado el elevado volumen de palabras codificadas en la capa de \textit{embeddings} utilizando este modelo, el modelo final de predicción de relevancia ocupa 3,6GB en disco.
+Se ha probado con dos conjuntos pre-entrenados de \emph{Word2vec} \cite{goldberg2014word2vec} uno de Google y otro de Glove \cite{pennington2014glove}. En el caso del Modelo de Google, el cuál cuenta con un diccionario de $3000000$ palabras, se ha analizado el conjunto de completo de entrenamiento y test del año 2015, en el cuál hay un total de $5026862$ sustantivos, de los cuáles $4809398$ se encuentran en el diccionario de Word2Vec. Cuenta con $97104$ sustantivos únicos de los cuáles $34203$ se tienen codificados. Dado el elevado volumen de palabras codificadas en la capa de \textit{embeddings} utilizando este modelo, el modelo final de predicción de relevancia ocupa 3,6GB en disco.
 
 Por otra parte, el modelo de Glove, el cuál cuenta con $400000$ palabras codificadas. Del total del mismo conjunto del $2015$, hay $4826158$ en el diccionario, siendo superior al modelo de Google a pesar de contar este último con más palabras codificadas. En cuanto a sustantivos únicos, se encuentran un total de $34203$, de nuevo, superior al modelo de Google, que además da lugar a modelos entrenados mucho mas ligeros, de 80MB en disco, por tanto se elige trabajar con el modelo de Glove. En la Tabla \ref{tab:red_tests} pueden verse los porcentajes de acierto con los conjuntos de test para cada año.
 

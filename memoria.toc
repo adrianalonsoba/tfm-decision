@@ -15,10 +15,10 @@
 \contentsline {section}{\numberline {3.2}Creaci\'on del lexic\'on de relevancias}{10}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}M\'odulo ETL}{10}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}M\'odulo de Gesti\'on del conocimiento}{12}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Text filter}{12}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Text normalizer}{12}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Lexicon builder}{13}{subsection.3.2.5}
-\contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{13}{section.3.3}
+\contentsline {subsection}{\numberline {3.2.3}Filtro de texto}{12}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Normalizador de texto}{13}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Constructor del lexic\'on}{13}{subsection.3.2.5}
+\contentsline {section}{\numberline {3.3}Creaci\'on del la red neuronal}{14}{section.3.3}
 \contentsline {section}{\numberline {3.4}Estimaci\'on de relevancias de art\IeC {\'\i }culos}{15}{section.3.4}
 \contentsline {chapter}{\numberline {4}Experimentos y resultados}{17}{chapter.4}
 \contentsline {section}{\numberline {4.1}Planificaci\'on temporal}{17}{section.4.1}

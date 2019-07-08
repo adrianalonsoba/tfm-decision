@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introducci\IeC {\'o}n}{3}{0}{1}
+\beamer@sectionintoc {2}{Objetivos}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Objetivos general}{4}{0}{2}
+\beamer@subsectionintoc {2}{2}{Objetivos espec\IeC {\'\i }ficos}{5}{0}{2}
+\beamer@sectionintoc {3}{Propuesta}{6}{0}{3}
+\beamer@subsectionintoc {3}{1}{Arquitectura del sistema}{6}{0}{3}
+\beamer@subsectionintoc {3}{2}{M\IeC {\'o}dulo de recolecci\IeC {\'o}n y preparaci\IeC {\'o}n de datos}{7}{0}{3}
+\beamer@subsectionintoc {3}{3}{M\IeC {\'o}dulo de gesti\IeC {\'o}n del conocimiento}{9}{0}{3}
+\beamer@sectionintoc {4}{Experimentos}{10}{0}{4}
+\beamer@sectionintoc {5}{Trabajos futuros}{10}{0}{5}

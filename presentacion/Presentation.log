@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.31)  9 JUL 2019 11:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.31)  9 JUL 2019 11:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1590,43 +1590,60 @@ Package pdftex.def Info: ./images/urjc.png used on input line 204.
  [11
 
 ]
-<images/2016_results_mod.png, id=177, 1254.6875pt x 997.7275pt>
+<images/pipeline_esp.png, id=177, 662.475pt x 800.9925pt>
+File: images/pipeline_esp.png Graphic file (type png)
+
+<use images/pipeline_esp.png>
+Package pdftex.def Info: images/pipeline_esp.png used on input line 212.
+(pdftex.def)             Requested size: 184.9429pt x 223.60414pt.
+File: ./images/urjc.png Graphic file (type png)
+ <use ./images/urjc.png>
+Package pdftex.def Info: ./images/urjc.png used on input line 212.
+(pdftex.def)             Requested size: 17.07182pt x 17.07167pt.
+
+Overfull \vbox (3.63235pt too high) detected at line 212
+ []
+
+[12
+
+ <./images/pipeline_esp.png>]
+<images/2016_results_mod.png, id=184, 1254.6875pt x 997.7275pt>
 File: images/2016_results_mod.png Graphic file (type png)
 
 <use images/2016_results_mod.png>
-Package pdftex.def Info: images/2016_results_mod.png used on input line 215.
+Package pdftex.def Info: images/2016_results_mod.png used on input line 224.
 (pdftex.def)             Requested size: 256.0748pt x 203.62201pt.
 File: ./images/urjc.png Graphic file (type png)
  <use ./images/urjc.png>
-Package pdftex.def Info: ./images/urjc.png used on input line 215.
+Package pdftex.def Info: ./images/urjc.png used on input line 224.
 (pdftex.def)             Requested size: 17.07182pt x 17.07167pt.
- [12
+ [13
 
- <./images/2016_results_mod.png>] <images/kib1.png, id=183, 1335.99126pt x 593.
+ <./images/2016_results_mod.png>] <images/kib1.png, id=191, 1335.99126pt x 593.
 21625pt>
 File: images/kib1.png Graphic file (type png)
 
 <use images/kib1.png>
-Package pdftex.def Info: images/kib1.png used on input line 225.
+Package pdftex.def Info: images/kib1.png used on input line 234.
 (pdftex.def)             Requested size: 355.65944pt x 157.91664pt.
 
-Overfull \hbox (11.46411pt too wide) in paragraph at lines 225--225
+Overfull \hbox (11.46411pt too wide) in paragraph at lines 234--234
  [] 
  []
 
 File: ./images/urjc.png Graphic file (type png)
 <use ./images/urjc.png>
-Package pdftex.def Info: ./images/urjc.png used on input line 225.
+Package pdftex.def Info: ./images/urjc.png used on input line 234.
 (pdftex.def)             Requested size: 17.07182pt x 17.07167pt.
- [13
+ [14
 
  <./images/kib1.png>]
 File: ./images/urjc.png Graphic file (type png)
  <use ./images/urjc.png>
-Package pdftex.def Info: ./images/urjc.png used on input line 237.
+Package pdftex.def Info: ./images/urjc.png used on input line 246.
 (pdftex.def)             Requested size: 17.07182pt x 17.07167pt.
 
-[14
+[15
 
 ]
 \tf@nav=\write6
@@ -1638,20 +1655,20 @@ Package pdftex.def Info: ./images/urjc.png used on input line 237.
 \tf@snm=\write8
 \openout8 = `Presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 239.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
  (./Presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 239.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 239.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package rerunfilecheck Info: File `Presentation.out' has not changed.
 (rerunfilecheck)             Checksum: 52291548307021C9B5D4C100B5517C57;696.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 239.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
  ) 
 Here is how much of TeX's memory you used:
- 22677 strings out of 493029
- 443748 string characters out of 6136234
+ 22686 strings out of 493029
+ 443910 string characters out of 6136234
  511480 words of memory out of 5000000
- 25607 multiletter control sequences out of 15000+600000
+ 25613 multiletter control sequences out of 15000+600000
  61175 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,16n,62p,506b,649s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1666,10 +1683,10 @@ usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmsy10.pfb>
-Output written on Presentation.pdf (14 pages, 682537 bytes).
+Output written on Presentation.pdf (15 pages, 741312 bytes).
 PDF statistics:
- 253 PDF objects out of 1000 (max. 8388607)
- 203 compressed objects within 3 object streams
- 47 named destinations out of 1000 (max. 500000)
- 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 261 PDF objects out of 1000 (max. 8388607)
+ 209 compressed objects within 3 object streams
+ 49 named destinations out of 1000 (max. 500000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 

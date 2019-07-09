@@ -49,7 +49,6 @@
 
 \date[Jul 2019]{9 Jul 2019}
 %\titlegraphic{\includegraphics[width=3cm]{DSLab_logo_1.png}}
-\titlegraphic{\includegraphics[width=2.5cm]{./images/logo_master_footer.png} \hspace{5cm} \includegraphics[width=1cm]{./images/urjc.png}}
 \def\UrlBreaks{\do\/\do-}
 \setbeamertemplate{caption}[numbered]
 
@@ -71,22 +70,19 @@
 \begin{frame}
 \begin{figure}
   \centering
-  \includegraphics[width=9cm, keepaspectratio]{relevant-content.jpg}
+  \includegraphics[width=7cm, keepaspectratio]{images/rese.png}
 \end{figure}
   \frametitle{Introducción}
-La comunidad investigadora se enfrenta cada vez a un mayor número de publicaciones y ten-
-dencias que deben atender a la hora hacer sus propias publicaciones. Estos tópicos y tendencias pueden ser estado del arte en el momento de su publicación en revistas o presentación en conferencias, no obstante, pueden perder relevancia a lo largo del tiempo. Por tanto, la posibilidad de obtener una medida de relevancia de un artículo puede ser de gran utilidad para la comunidad científica.
+La comunidad investigadora se enfrenta cada vez a un mayor número de publicaciones y tendencias que deben atender a la hora hacer sus propias publicaciones. Estos tópicos y tendencias pueden ser estado del arte en el momento de su publicación en revistas o presentación en conferencias, no obstante, pueden perder relevancia a lo largo del tiempo. Por tanto, la posibilidad de obtener una medida de relevancia de un artículo puede ser de gran utilidad para la comunidad científica.
 \end{frame}
 
 \section{Objetivos}
 \subsection{Objetivos general}
 \begin{frame}\frametitle{Objetivo general} 
 El principal objetivo del presente trabajo es la creación de un sistema completo de evaluación
-de relevancias, lo que comprende un marco de trabajo que incluye la interfaz para la introduc-
-ción de documentos y a la salida devuelva la relevancia de los mismos.
+de relevancias, lo que comprende un marco de trabajo que incluye la interfaz para la introducción de documentos y a la salida devuelva la relevancia de los mismos.
 
-\begin{figure}
-  \centering
+\begin{figure}  \centering
   \includegraphics[width=9cm, keepaspectratio]{relevant-content.jpg}
 \end{figure}
 \end{frame}
@@ -109,12 +105,12 @@ ción de documentos y a la salida devuelva la relevancia de los mismos.
 \begin{frame}\frametitle{Arquitectura básica} 
 \begin{figure}
   \centering
-  \includegraphics[width=10.2cm, keepaspectratio]{arquitectura.png}
+  \includegraphics[width=12cm, keepaspectratio]{images/arc_esp.png}
 \end{figure}
 \end{frame}
 
-\subsection{Módulo de recolección y preparación de datos}
-\begin{frame} \frametitle{Descarga y limpieza de datos} 
+\subsection{Recolección y preparación de datos}
+\begin{frame} \frametitle{Preparación de los artículos} 
 \begin{itemize}
 \item Descarga, limpieza y parseo de artículos.
 \item Cálculo de resúmenes automáticos.
@@ -127,7 +123,7 @@ La reputación de un artículo viene dada por la siguiente fórmula:
 	rep\_authors_{p} = \sum  \limits_{i=1}^n  rep_{i} / n \,.
 \end{equation}
 \begin{equation}
-	rep_{i} = \omega_1 * inf\_citation\_count + \omega_2 * citation\_velocity + \omega_3 * seniority + \omega_4 * papers \,,
+	rep_{i}=\omega_1 * inf\_citation\_count + \omega_2 * citation\_velocity+\omega_3 * seniority + \omega_4 * papers \,,
     \label{eq:author_reputation}
 \end{equation}
 
@@ -136,69 +132,108 @@ La reputación de un artículo viene dada por la siguiente fórmula:
 
 \end{frame}
 
-\begin{frame} \frametitle{Descarga y limpieza de datos} 
+\begin{frame} \frametitle{Generación de lexicón} 
+
+Relevancia de un término $t$ en un corpus $C$:
+\begin{equation}
+	rel\_lex_{t} =\log\left(\frac{1}{N} \cdot \sum \limits_{p=1}^N \beta  \cdot tfidf(t)_p + (1-\beta) \cdot rep_p\right), \forall p \in C \,,
+\label{eq:4}
+\end{equation}
+
+Relevancia acumulada por año:
+\begin{equation}
+	rel\_lex_{t}(y) = \rho \cdot rel\_lex_{t} + (1-\rho)\cdot rel\_lex_{t}(y-1) \,,
+\label{eq:5}
+\end{equation}
+
+\end{frame}
+
+\begin{frame} \frametitle{Generación del lexicón} 
+
+\begin{figure}  \centering
+  \includegraphics[width=9cm, keepaspectratio]{images/2018_hist.png}
+\end{figure}
+\end{frame}
+
+
+
+
+\subsection{Creación de la red neuronal}
+\begin{frame} \frametitle{Creación de la red neuronal} 
+\begin{itemize}
+\item Embedding pre-entrenado de 400.000 palabras.
+\item Red neuronal convolucional.
+\item 320.000 frases train.
+\item 80.000 frases test.
+\item Salida softmax.
+\end{itemize}
+
 \begin{table}[]
 \begin{center}
-
 \begin{tabular}{|c|c|}
 \hline
-\textbf{Parámetro}       & \textbf{Saturación} \\ \hline
-Número de artículos      & 196                 \\ \hline
-citationVelocity         & 105                 \\ \hline
-influentialCitationCount & 208                 \\ \hline
-Seniority                & 34                  \\ \hline
-Citas del artículo       & 10                  \\ \hline
+\textbf{Año}       & \textbf{Acierto en conjunto de test} \\ \hline
+2015      	& $0.964$                \\ \hline
+2016        & $0.962$                 \\ \hline
+2017 		& $0.959$                 \\ \hline
+2018        & $0.959$                  \\ \hline
 \end{tabular}
-\caption{Valores de saturación de parámetros de reputación}
-\label{tab:saturacion}
+\caption{Resultados de test de las redes neuronales}
+\label{tab:red_tests}
 \end{center}
 \end{table}
 
 \end{frame}
 
 
-\subsection{Módulo de gestión del conocimiento}
-\begin{frame} \frametitle{Módulo de gestión del conocimiento} 
-\begin{itemize}
-\item Obtención de matriz de términos por documentos.
-\item Creación del lexicón:
+\subsection{Estimación de relevancia}
+\begin{frame} \frametitle{Estimación de relevancia de artículos} 
+
+-Relevancia combinada entre lexicón y red neuronal:
 \begin{equation}
-	relevance(t) =\log(\frac{1}{N} \sum  \limits_{i=1}^N \alpha \cdot tfidf(t_i) + (1-\alpha)\cdot reputation_i),    \forall t \in D
-    \label{eq:relevance}
-\end{equation}
-\begin{equation}
-	relevance'(t) = \beta \cdot relevance(t) + (1 - \beta) \cdot occurence(t)
-    \label{eq:relevance2}
+	combined\_rel_{p} = \theta \cdot rel\_lex_{p} + (1-\theta) \cdot \frac{1}{K} \sum \limits_{k=1}^K rel\_neural(s_k)\,,
+    \label{eq:7}
 \end{equation}
 
-\item Visualización
-\item Evaluación de nuevos artículos:
+-Relevancia final combinada con reputación:
 \begin{equation}
-	relevance_d =  \frac{1}{N} \sum  \limits_{i=1}^N relevance'(t_i)
-    \label{eq:relevance3}
+	combined\_rel\_doi_{p} = \gamma \cdot combined\_rel_{p} + (1-\gamma)\cdot rep_{p} \,,
+    \label{eq:8}
 \end{equation}
 
-\end{itemize}
+\end{frame}
 
+\section{Experimentos}
 
+\begin{frame} \frametitle{Experimentos} 
+
+-2000 artículos analizados por cada año:
+\begin{figure}  \centering
+  \includegraphics[width=9cm, keepaspectratio]{images/2016_results_mod.png}
+\end{figure}
 
 \end{frame}
 
 
-\section{Experimentos}
-\subsection{}
+
+\begin{frame} \frametitle{Experimentos} 
+
+\begin{figure}  \centering
+  \includegraphics[width=12.5cm, keepaspectratio]{images/kib1.png}
+\end{figure}
+
+\end{frame}
 
 \section{Trabajos futuros}
 \begin{frame} \frametitle{Trabajos futuros} 
 \begin{itemize}
-\item Optimización del cálculo de relevancias para poder considerar un mayor corpus.
+\item Aumento de tamaño de los lexicones.
 \item Implementar, probar y comparar otras métricas de relevancia.
-\item Emplear relaciones jeraŕquicas de ontologías médicas.
-\item Extracción de entidades con Scipacy
-\item Construir lexicones por cada año.
-\item Crear una red de neuronas para predecir las relevancias de los términos que no se encuentren en el lexicón.
+\item Detección de correferencias de términos.
+\item Creación de word embeddings a partir del corpus.
+\item Sustituir sustantivos por conceptos de n-gramas en base a diccionarios u ontologías.
+
 \end{itemize}
 \end{frame}
-
 
 \end{document}

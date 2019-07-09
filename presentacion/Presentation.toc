@@ -6,7 +6,8 @@
 \beamer@subsectionintoc {2}{2}{Objetivos espec\IeC {\'\i }ficos}{5}{0}{2}
 \beamer@sectionintoc {3}{Propuesta}{6}{0}{3}
 \beamer@subsectionintoc {3}{1}{Arquitectura del sistema}{6}{0}{3}
-\beamer@subsectionintoc {3}{2}{M\IeC {\'o}dulo de recolecci\IeC {\'o}n y preparaci\IeC {\'o}n de datos}{7}{0}{3}
-\beamer@subsectionintoc {3}{3}{M\IeC {\'o}dulo de gesti\IeC {\'o}n del conocimiento}{9}{0}{3}
-\beamer@sectionintoc {4}{Experimentos}{10}{0}{4}
-\beamer@sectionintoc {5}{Trabajos futuros}{10}{0}{5}
+\beamer@subsectionintoc {3}{2}{Recolecci\IeC {\'o}n y preparaci\IeC {\'o}n de datos}{7}{0}{3}
+\beamer@subsectionintoc {3}{3}{Creaci\IeC {\'o}n de la red neuronal}{10}{0}{3}
+\beamer@subsectionintoc {3}{4}{Estimaci\IeC {\'o}n de relevancia}{11}{0}{3}
+\beamer@sectionintoc {4}{Experimentos}{12}{0}{4}
+\beamer@sectionintoc {5}{Trabajos futuros}{14}{0}{5}

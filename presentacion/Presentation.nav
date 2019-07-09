@@ -23,25 +23,33 @@
 \headcommand {\beamer@subsectionentry {0}{3}{1}{6}{Arquitectura del sistema}}\headcommand {\beamer@subsectionpages {6}{5}}
 \headcommand {\slideentry {3}{1}{1}{6/6}{Arquitectura del sistema}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{7}{M\IeC {\'o}dulo de recolecci\IeC {\'o}n y preparaci\IeC {\'o}n de datos}}\headcommand {\beamer@subsectionpages {6}{6}}
-\headcommand {\slideentry {3}{2}{1}{7/7}{M\IeC {\'o}dulo de recolecci\IeC {\'o}n y preparaci\IeC {\'o}n de datos}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{7}{Recolecci\IeC {\'o}n y preparaci\IeC {\'o}n de datos}}\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\slideentry {3}{2}{1}{7/7}{Recolecci\IeC {\'o}n y preparaci\IeC {\'o}n de datos}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {3}{2}{2}{8/8}{M\IeC {\'o}dulo de recolecci\IeC {\'o}n y preparaci\IeC {\'o}n de datos}{0}}
+\headcommand {\slideentry {3}{2}{2}{8/8}{Recolecci\IeC {\'o}n y preparaci\IeC {\'o}n de datos}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@subsectionentry {0}{3}{3}{9}{M\IeC {\'o}dulo de gesti\IeC {\'o}n del conocimiento}}\headcommand {\beamer@subsectionpages {7}{8}}
-\headcommand {\slideentry {3}{3}{1}{9/9}{M\IeC {\'o}dulo de gesti\IeC {\'o}n del conocimiento}{0}}
+\headcommand {\slideentry {3}{2}{3}{9/9}{Recolecci\IeC {\'o}n y preparaci\IeC {\'o}n de datos}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\sectionentry {4}{Experimentos}{10}{Experimentos}{0}}
-\headcommand {\beamer@sectionpages {6}{9}}
-\headcommand {\beamer@subsectionpages {9}{9}}
-\headcommand {\beamer@subsectionentry {0}{4}{1}{10}{}}\headcommand {\beamer@subsectionpages {10}{9}}
-\headcommand {\sectionentry {5}{Trabajos futuros}{10}{Trabajos futuros}{0}}
-\headcommand {\beamer@sectionpages {10}{9}}
-\headcommand {\beamer@subsectionpages {10}{9}}
-\headcommand {\slideentry {5}{0}{1}{10/10}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{10}{Creaci\IeC {\'o}n de la red neuronal}}\headcommand {\beamer@subsectionpages {7}{9}}
+\headcommand {\slideentry {3}{3}{1}{10/10}{Creaci\IeC {\'o}n de la red neuronal}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@partpages {1}{10}}
-\headcommand {\beamer@subsectionpages {10}{10}}
-\headcommand {\beamer@sectionpages {10}{10}}
-\headcommand {\beamer@documentpages {10}}
-\headcommand {\def \inserttotalframenumber {10}}
+\headcommand {\beamer@subsectionentry {0}{3}{4}{11}{Estimaci\IeC {\'o}n de relevancia}}\headcommand {\beamer@subsectionpages {10}{10}}
+\headcommand {\slideentry {3}{4}{1}{11/11}{Estimaci\IeC {\'o}n de relevancia}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\sectionentry {4}{Experimentos}{12}{Experimentos}{0}}
+\headcommand {\beamer@sectionpages {6}{11}}
+\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\slideentry {4}{0}{1}{12/12}{}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {4}{0}{2}{13/13}{}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\sectionentry {5}{Trabajos futuros}{14}{Trabajos futuros}{0}}
+\headcommand {\beamer@sectionpages {12}{13}}
+\headcommand {\beamer@subsectionpages {12}{13}}
+\headcommand {\slideentry {5}{0}{1}{14/14}{}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\beamer@partpages {1}{14}}
+\headcommand {\beamer@subsectionpages {14}{14}}
+\headcommand {\beamer@sectionpages {14}{14}}
+\headcommand {\beamer@documentpages {14}}
+\headcommand {\def \inserttotalframenumber {14}}
